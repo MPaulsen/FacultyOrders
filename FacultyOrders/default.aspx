@@ -4,6 +4,18 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="Body">
     <h3>UCF Order Form</h3>
+
+    <div>
+        <a href="Accounting.aspx">Accounting</a>
+    </div>
+
+        <div>
+        
+               Name: <asp:TextBox ID= "txtName" runat = "server"></asp:TextBox>
+               <br />
+               <br />
+        </div>
+
         <div>
         
                Email: <asp:TextBox ID= "txtEmail" runat = "server"></asp:TextBox>
@@ -24,15 +36,11 @@
         </div>
 
         <div>
-                Does your order contain Laptops/Computers?
-                <br/>
-                <asp:RadioButton ID="rbYesComp" Text="Yes" TextAlign="Right" GroupName="compRadio" runat="server" />
-                <br />
-                <asp:RadioButton ID="rbNoComp" Text="No" TextAlign="Right" GroupName="compRadio" runat="server" />
+                Order contains Laptops/Computers? <asp:CheckBox ID="chkComp" runat="server" />
                 <br />
                 <br />
        </div>
-                Vender: <asp:TextBox ID="txtVendor" runat ="server"></asp:TextBox>
+                Vendor: <asp:TextBox ID="txtVendor" runat ="server"></asp:TextBox>
                 <br />
                 <br />
        <div>
@@ -56,22 +64,25 @@
            <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server"/>
        </div>
 
+        <div>
+           <asp:Label ID="lblStatus" runat="server"/>
+       </div>
 
 
     <asp:RegularExpressionValidator ID="revNumber" 
-        ControlToValidate="Amount"
+        ControlToValidate="txtAmount"
         ValidationExpression="^\d+(\.\d\d)?$"
         ErrorMessage="Please enter only numbers like 100 or 100.00" 
         runat="server"></asp:RegularExpressionValidator>
 
     <asp:RegularExpressionValidator ID="RegExEmailValid"
-        ControlToValidate = "email"
+        ControlToValidate = "txtEmail"
         ValidationExpression = "\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
         ErrorMessage = "Invalid Email Format"
         runat = "server"></asp:RegularExpressionValidator>
         <br />
     <asp:RegularExpressionValidator ID="RegExAccountValid"
-       ControlToValidate="accountNum"
+       ControlToValidate="txtAccountNumber"
        ValidationExpression="\d+"
        ErrorMessage = "Please enter a valid Account Number"
        runat = "server"></asp:RegularExpressionValidator>

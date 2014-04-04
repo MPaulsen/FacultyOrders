@@ -19,6 +19,14 @@ namespace FacultyOrders
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            lblStatus.Text = "";
+
+            if (txtAmount.Text.ToString() == "")
+            {
+                lblStatus.Text = "Please enter an amount.";
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand())
@@ -26,16 +34,23 @@ namespace FacultyOrders
                     command.Parameters.Clear();
                     try
                     {
-                        command.CommandText = "INSERT INTO Users Values(@username)";
-                        SqlParameter param1 = new SqlParameter();
-                        param1.Value = txtEmail.Text.ToString();
-                        param1.ParameterName = "@username";
+                        command.CommandText = "INSERT INTO Orders Values(GETDATE(), NULL, NULL, NULL, @account, @urgent, @Comp, @Vendor, @Desc, NULL, NULL, @Name, @Email, @Amount, NULL, NULL, NULL)";
+                        command.Parameters.Add(new SqlParameter("account", txtAccountNumber.Text.ToString()));
+                        command.Parameters.Add(new SqlParameter("urgent", (chkUrgent.Checked)?1:0));
+                        command.Parameters.Add(new SqlParameter("comp", (chkComp.Checked)?1:0));
+                        command.Parameters.Add(new SqlParameter("Vendor", txtVendor.Text.ToString()));
+                        command.Parameters.Add(new SqlParameter("Desc",  txtItemDesc.Text.ToString()));
+                        command.Parameters.Add(new SqlParameter("Name", txtName.Text.ToString()));
+                        command.Parameters.Add(new SqlParameter("Email", txtEmail.Text.ToString()));
+                        command.Parameters.Add(new SqlParameter("Amount", txtAmount.Text.ToString()));
                         command.Connection = connection;
                         command.Connection.Open();
 
                         command.ExecuteNonQuery();
 
                         command.Connection.Close();
+
+                        lblStatus.Text = "Order submitted successfully.";
 
                     }
                     catch

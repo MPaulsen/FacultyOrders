@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Accounting.aspx" />
     <Content Include="FacultyOrders.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -70,6 +71,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounting.aspx.cs">
+      <DependentUpon>Accounting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Accounting.aspx.designer.cs">
+      <DependentUpon>Accounting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -79,6 +87,7 @@
     </Compile>
     <Compile Include="FacultyOrders.Master.cs">
       <DependentUpon>FacultyOrders.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FacultyOrders.Master.designer.cs">
       <DependentUpon>FacultyOrders.Master</DependentUpon>

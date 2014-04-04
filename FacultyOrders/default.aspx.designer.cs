@@ -13,6 +13,15 @@ namespace FacultyOrders {
     public partial class _default {
         
         /// <summary>
+        /// txtName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtName;
+        
+        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -40,22 +49,13 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.CheckBox chkUrgent;
         
         /// <summary>
-        /// rbYesComp control.
+        /// chkComp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbYesComp;
-        
-        /// <summary>
-        /// rbNoComp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbNoComp;
+        protected global::System.Web.UI.WebControls.CheckBox chkComp;
         
         /// <summary>
         /// txtVendor control.
@@ -92,6 +92,15 @@ namespace FacultyOrders {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
         
         /// <summary>
         /// revNumber control.
