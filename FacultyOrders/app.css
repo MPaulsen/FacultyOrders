@@ -1,0 +1,1722 @@
+﻿@font-face{
+	font-family: ubuntu;
+	src: url('../fonts/Ubuntu-L.ttf'),
+    url('../fonts/Ubuntu-L.eot'); /* IE9 */
+}
+
+body{
+	font-family: arial !important;
+}
+.banner{
+	margin-top: -9px;
+	margin-left: 30px;
+	z-index: 9999;
+	margin-bottom: -150px;
+}
+.nocolor tbody tr:nth-child(even){
+	background-color: #ffffff;
+}
+.ucflist{
+	padding: 2px;
+	list-style-type: circle !important;
+	margin-top: 0px;
+}
+.seal{
+	width:13%;
+	margin-bottom: 10px;
+}
+.redlink{
+	color: red;
+}
+
+.centered{
+	text-align: center;
+	margin: 0 auto;
+	display:block;
+}
+
+.bluetext{
+	color: rgb(50,60,88);
+}
+
+.redlink:hover{
+	color: black;
+}
+.putsomepad{
+	padding-left: 40px;
+}
+.news{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px#888;
+}
+
+.navigation{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px#888;
+	border: 0px;
+	margin: 0 auto;
+	background-color: #FFF8F0;
+	z-index: 1;
+}
+
+.whitebox{
+	background-color: #FFF8F0;
+	height: 180px;
+	border-left: 2px #555 solid;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.white{
+	color: #fff!important;
+}
+.red{
+	color: rgb(133,5,11);
+	font-weight: bold;
+}
+.megamenu_light_bar {
+	background: #FFF8F0;
+	border: none;
+	-webkit-box-shadow: inset 0px 0px 2px rgba(255,255,255,0.7);
+	-moz-box-shadow: inset 0px 0px 2px rgba(255,255,255,0.7);
+	box-shadow: inset 0px 0px 2px rgba(255,255,255,0.7);
+}
+
+ul.accordion{
+	border-bottom: none;
+}
+.whiteMenu
+{
+	background-color: #FFF8F0;
+}
+.academicBox{
+	height: 165px!important;
+}
+.topAreas{
+	margin-top: 20px;
+}
+.topArea p{
+	margin-top: 10px;
+}
+.cove{
+	margin-bottom: 20px;
+}
+.tabs.vertical dd a{
+	background-color: #FFF8F0;
+	color: #000;
+}
+.tabs.vertical dd.active a, .tabs.vertical li.active a{
+	background: url('/resources/rubbergrip.png');
+}
+.notabs{
+	background-color: #FFF8F0;
+	margin-top: 40px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.notabs2{
+	background-color: #FFF8F0;
+	margin-top: 40px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	margin: 0 auto;
+	display: block;
+	text-align:center;
+}
+.notabs2 p{
+	margin-top: 15px;
+}
+.notabs p{
+	margin-top: 15px;
+}
+.tabs{
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+.tabarea{
+	margin-top: 30px;
+}
+.nav-bar{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: none;
+	width: 100%;
+	background: #FFF8F0;
+}
+
+.nav-bar>li{
+	padding-left: 12px;
+	padding-right: 12px;
+	border-color: #FFF8F0;
+}
+
+.nav-bar>li:last-child{
+	padding-left: 3px;
+	padding-right: 3px;
+	border-color: #FFF8F0;
+}
+.nav-bar>li>a{
+	color: black;
+}
+
+.nav-bar>li>a:hover{
+	color:#ffcf00!important;
+	-webkit-transition: color .5s;
+	-moz-transition: color .5s;
+	-o-transition: color .5s;
+	transition: color .5s;
+	transition-property: color;
+	transition-duration: 0.5s;
+	transition-timing-function: initial;
+	transition-delay: initial;
+	font-weight: bold;
+}
+
+
+ul.flyout li a, .nav-bar li ul li a{
+	-webkit-transition: color .5s;
+	-moz-transition: color .5s;
+	-o-transition: color .5s;
+	transition: color .5s;
+	transition-property: color;
+	transition-duration: 0.5s;
+	transition-timing-function: initial;
+	transition-delay: initial;
+}
+.menuwrapper ul{
+	text-align: center;
+}
+
+#myGallery{
+	width: 100%;
+}
+.gallerytitles{
+	text-align: center;
+	margin-bottom: 8px;
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 35px;
+	font-size: 16px;
+}
+.gallerytitles a{
+	font-weight: bold;
+	margin-top: 10px;
+	font-size: 16px;
+	padding-right: 15px;
+	padding-left: 20px;
+	color: #fff;
+}
+
+.gallerytitles a:hover{
+	color: #ffcf00;
+	font-weight:bold;
+}
+
+[class*="foundicon-"]{
+	line-height: 30px;
+	margin-right: 10px;
+	font-size: 25px;
+	vertical-align: center;
+	font-weight: bold;
+
+}
+
+i:hover{
+	color: gray;
+	-webkit-transition: color .5s;
+	-moz-transition: color .5s;
+	-o-transition: color .5s;
+	transition: color .5s;
+	transition-property: color;
+	transition-duration: 0.5s;
+	transition-timing-function: initial;
+	transition-delay: initial;
+	font-weight: bold;
+}
+.nexttoiconfont{
+	font-size: 15px;
+	vertical-align: text-bottom;
+	line-height: 30px;
+}
+
+.titleforgallery{
+	font-size: 15px;
+	line-height: 20px;
+}
+.nexttoiconfont:hover i{
+	color: #ffcf00;
+}
+
+
+.header{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+	display:none;
+}
+.header2{
+	margin-top: 0px;
+	margin-bottom: 28px;
+	text-align: center;
+	display:none;
+}
+.mobilececs{
+	margin-bottom: -20px;
+	text-align: center;
+	background: url('../images/foundation/gold.png');
+
+}
+.tabletheader{
+	display:none !important;
+}
+.mobileheader{
+	display:none !important;
+}
+
+
+body {
+	line-height: 20px;
+	color: black;
+	background: url("../images/foundation/gold.png");
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-family: ubuntu;
+}
+
+.headertitles{
+	font-size: 25px;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 30px;
+}
+
+a{
+	color:black;
+	font-weight: bold;	
+
+
+}
+
+a:hover{
+	color: #808080;
+	text-decoration: underline;
+}
+
+p{
+	color:#000;
+	/*line-height: 30px;*/
+}
+
+i, b{
+	color:#000;
+}
+#colorwhite{
+	color: #fff;
+}
+
+.orbit-wrapper .slider-nav span { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 400ms; -moz-transition: opacity 400ms; -o-transition: opacity 400ms; transition: opacity 400ms; }
+.orbit-wrapper:hover .slider-nav span { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; }
+.flyout {
+	width:300px;
+}
+
+.flyout-toggle a{
+	color: #000;
+	text-decoration: none;
+}
+.mobilenav{
+	background: url('../images/foundation/black.png')!important;
+	margin-bottom: 50px;
+}
+.mobilenav > li:hover {
+	background: url('../images/foundation/black.png')!important;
+}
+.mobilenav li a{
+	color: #fff;
+}
+.timer{
+	display: none;
+}
+.sublist{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	background-color: #FFF8F0;
+	box-shadow: 0 0 5px #888;
+	text-align: center;
+	width: 100%;
+	margin-top: -18px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	color: #000;
+	font-weight: bold;
+}
+.sublist p{
+	margin:5px;
+}
+.sublist a{
+	line-height: 20px;
+	color: #000;
+	font-size: 90%;
+	font-weight: bold;
+}
+.sublist a:hover{
+	color: #808080;
+}
+
+.sidebar{
+	background: url('/resources/rubbergrip.png');
+	margin-top: 50px;
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	padding-bottom: 15px;
+	margin-bottom: 50px;
+	color: #fff;
+	line-height: 30px;
+	padding: 30px;
+	padding-top: 0px;
+
+}
+
+.departmentsidebar{
+	background: url('/resources/rubbergrip.png');
+	min-height: 300px;
+	margin-top: 25px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	padding-bottom: 15px;
+	margin-bottom: 50px;
+	color: #fff;
+	line-height: 30px;
+	padding-top: 3px;
+
+}
+
+.alumnisidebar{
+	margin-top: 25px!important;
+}
+
+.sidebar a{
+	line-height: 20px;
+	color: #fff;
+	font-weight: bold;
+}
+
+.sidebar a:hover{
+	color: #fcbe09;
+}
+.departmentsidebar a{
+	line-height: 20px;
+	color: #fff;
+	font-weight: bold;
+}
+
+.departmentsidebar a:hover{
+	color: #fcbe09;
+}
+.sidebar h1{
+	color:#fcbe09;
+	font-weight: bold;
+	font size: 30px;
+	text-align: center;
+	margin-top: 0px;
+
+}
+
+.alumnisidebar h4{
+	color:#fcbe09;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 3px;
+
+}
+.departmentsidebar h3{
+	color:#fcbe09;
+	font-weight: bold;
+	font size: 20px;
+	text-align: center;
+	margin-top: 0px;
+
+}
+
+.news{
+	margin-top: 30px;
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.newsinner{
+	text-align: center;
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 40px;
+}
+
+.newsinner h3{
+	margin-top: 2px;
+	color: #fff;
+	font-size: 22px;
+}
+
+.newsrow{
+	text-align:center;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.box{
+	float:left;
+}
+.newsimage{
+	margin: 0 auto;
+	padding-top: 10px;
+
+}
+
+.newscontent{
+	float:left;
+	text-align: left;
+	padding-bottom: 15px;
+}
+
+.events{
+	margin-top: 30px;
+	margin-bottom: 40px;
+	min-height: 350px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.frontnews{
+	-moz-box-shadow: 0 0 5px #000;
+	-webkit-box-shadow: 0 0 5px#000;
+	box-shadow: 0 0 5px #000;
+}
+
+.eventsinner{
+	margin-left: -16px;
+	padding: 6px;	
+	padding-left: 20px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 40px;
+}
+
+.eventsinner h3{
+	text-align: center;
+	margin-top: 2px;
+	color: #fff;
+	font-size: 22px;
+	margin-bottom: 30px;
+}
+
+.eventsinner a{
+	line-height: 25px;
+}
+
+.eventstitles{
+	font-weight: bold;
+	font-size: 120%;
+}
+
+.eventtitle{
+	color:#000;
+	font-weight: normal;
+}
+
+
+.viewmoretitle{
+	font-weight: bold;
+	color: #000;
+}
+
+.viewmorenews{
+	font-weight: bold;
+	color: #000;
+	text-align: right !important;
+}
+
+.defense{
+	line-height: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.innercontent{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+.innercontent2{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	text-align:center;
+	margin: 0 auto;
+	display: block;
+}
+
+
+
+.innercontent h3{
+	padding-left: 30px;
+}
+.innercontent ul{
+	padding-left: 30px;
+	list-style-type: none;
+}
+
+.newsstoryinner{
+	text-align: center;
+	line-height: 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 30px;
+
+}
+
+.newsstoryinner h3{
+	padding-left: 30px;
+}
+.newsstoryinner ul{
+	padding-left: 30px;
+	list-style-type: none;
+}
+
+
+.fe{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.icons{
+	margin-top: 35px;
+	text-align:center;
+}
+.icons img{
+	width: 40%;
+}
+
+
+.footer{
+	color:#fff;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	background: url('/resources/rubbergrip.png');
+	min-height: 200px;
+	margin-top: 20px;
+	text-align: center;
+	vertical-align:baseline;
+	margin-bottom: -20px;
+	padding-top: 15px;
+
+}
+.footer img{
+	margin-bottom: 20px;
+}
+.footer a{
+	color: #fff;
+}
+.footer a:hover{
+	color: #ffcf00;
+	-webkit-transition: color .5s;
+	-moz-transition: color .5s;
+	-o-transition: color .5s;
+	transition: color .5s;
+	transition-property: color;
+	transition-duration: 0.5s;
+	transition-timing-function: initial;
+	transition-delay: initial;
+	font-weight: bold;
+}
+
+.footer i{
+	color: white;
+	font-style: normal;
+}
+.footer i:hover{
+	color: #ffcf00;
+	font-weight: bold;
+	-webkit-transition: color .5s;
+	-moz-transition: color .5s;
+	-o-transition: color .5s;
+	transition: color .5s;
+	transition-property: color;
+	transition-duration: 0.5s;
+	transition-timing-function: initial;
+	transition-delay: initial;
+	font-weight: bold;
+}
+
+.toTop{
+	height: 50px;
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+	padding-top: 12px;
+}
+.toTop span{
+	font-size: 20px;
+	font-weight: bold;
+}
+.toTop a{
+	color: #fff;
+}
+
+.imgcenter{
+	margin: 0 auto;
+	display:block;
+	margin-bottom: -3px;
+}
+
+.headerImages{
+	text-align: center;
+}
+.headerImages img{
+	position: relative;
+	z-index: 2;
+	-webkit-box-shadow: 0 4px 4px -2px #000000;
+    -moz-box-shadow: 0 4px 4px -2px #000000;
+    box-shadow: 0 4px 4px -2px #000000;
+    width: 100%;
+    overflow: hidden;
+}
+
+.headerAbout{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	position: relative;
+	z-index: 1;	
+	margin-top: -50px;
+	background-color: #FFF8F0;
+	position:relative;
+	/*font-weight: bold;*/
+
+}
+.headerAboutinner{
+	margin: 0 auto;
+	width: 95%;
+}
+.headerAbout p{
+	/*font-weight: bold;*/
+	padding-top: 50px;
+	padding-left: 30px;
+	padding-right: 20px;
+}
+
+.headerAbout img{
+	margin-top: 70px;
+}
+
+
+
+.headers{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	position: relative;
+	z-index: 1;	
+	margin-top: -50px;
+	height: 80%;
+	background-color: #FFF8F0;
+	padding-bottom: 30px;
+	position:relative;
+}
+.headers{
+	margin: 0 auto;
+	height: 55%;
+	width: 95%;
+}
+.headers p{
+	font-weight: normal;
+	padding-top: 70px;
+	padding-left: 30px;
+	padding-right: 20px;
+}
+
+/*********** Students *********************/
+.inner{
+	min-height: 300px;
+
+}
+
+.inner2{
+	min-height: 10px;
+	cursor: pointer;
+}
+
+
+.inner3{
+	min-height: 10px;
+	cursor: pointer;
+}
+
+.inner4{
+	min-height: 10px;
+	cursor: pointer;
+}
+.inner5{
+	min-height: 10px;
+	cursor: pointer;
+}
+.inner6{
+	min-height: 10px;
+	cursor: pointer;
+}
+.defenseSeminars{
+	margin-top: 35px;
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.half{
+	margin-top: 50px;
+	min-height: 400px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	padding-bottom: 15px;
+	margin-bottom: 50px;
+
+}
+
+.smalltwelve{
+	margin-top: 30px;
+	min-height: 200px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	padding-bottom: 15px;
+	margin-bottom: 30px;
+
+}
+
+
+.half ul{
+	list-style-type: none;
+}
+
+.halfdefenses{
+	margin-top: 35px;
+	min-height: 400px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	padding-bottom: 15px;
+	margin-bottom: 50px;
+
+}
+
+.halfdefenses ul{
+	list-style-type: none;
+}
+
+
+.halfies{
+	text-align: center;
+	font-size: 22px;
+	margin-left: -22px;
+	padding: 6px;
+	margin-right: -22px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 40px;
+}
+ 
+
+.large{
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+.larger{
+	min-height: 350px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+
+.scholarshipOfferings{
+	min-height: 400px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+
+
+.times{
+	font-weight: bold;
+}
+
+.harris{
+	margin-top: 30px;
+	min-height: 400px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	margin-bottom: 50px;
+
+}
+.harris p{
+	line-height: 23px;
+}
+
+.adminimages{
+	margin-bottom: 50px;
+	margin-top: 10px;
+	margin-right: 10px;
+	float:left;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+
+
+}
+.images{
+	margin-bottom: 50px;
+	margin-top: 10px;
+	margin-right: 10px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+
+
+}
+.advisingimages{
+	margin-bottom: 100px;
+	margin-top: 30px;
+	margin-right: 10px;
+	float:left;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+
+
+}
+
+.defenseSeminars{
+	margin-top: 30px;
+	min-height: 400px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.departmentpubs{
+	margin-top: 50px;
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.panels{
+	padding-top: 10px;
+}
+.defenseSeminarsTitles{
+	text-align: center;
+	font-size: 22px;
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 40px;
+}
+
+.defenseSeminarsTitles a{
+	font-weight: bold;
+	font-size: 20px;
+	padding-right: 15px;
+	padding-left: 20px;
+	color: #fff;
+}
+.defenseSeminarsTitles a:first-child{
+	padding-right: 15px;
+}
+.defenseSeminarsTitles a:last-child{
+	padding-left: 20px;
+}
+.defenseSeminarsTitles span{
+	font-weight: bold;
+	font-size: 25px;
+}
+.defenseSeminarsTitles a:hover{
+	color: #ffcf00;
+	cursor: pointer;
+}
+
+.titles a{
+	font-weight: bold;
+	padding-right: 15px;
+	padding-left: 20px;
+	color: #fff;
+}
+.titles a:first-child{
+	padding-right: 15px;
+	cursor: pointer;
+}
+.titles a:last-child{
+	padding-left: 20px;
+	cursor:pointer;
+}
+.titles span{
+	font-weight: bold;
+	font-size: 25px;
+}
+.defenseSeminarsTitles a:hover{
+	color: #ffcf00;
+	cursor: pointer;
+}
+.newstitles{
+	text-align: center;
+	margin-bottom: 15px;
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 60px;
+	}
+	
+	.newstitles h4{
+	margin-top: 2px;
+	color: #fff;
+	font-size: 18px;
+	}
+.titles{
+	text-align: center;
+	/*margin-bottom: 12px;*/
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('resources/rubbergrip.png');
+	height: 40px;
+	font-size: 14px;
+}
+
+
+.titles h3{
+	margin-top: 2px;
+	color: #fff;
+	font-size: 22px;
+}
+.titles h4{
+	margin-top: 2px;
+	color: #fff;
+	font-size: 20px;
+}
+.titles h5{
+	margin-top: 2px;
+	color: #fff;
+	font-size:18px;
+}
+
+.titles h6{
+	margin-top: 2px;
+	color: #fff;
+	font-size:17px;
+}
+
+.newstitles i{
+	color: white;
+}
+
+.titles2{
+	/*margin-bottom: 12px;*/
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #fff;
+	background: url('/resources/rubbergrip.png');
+	height: 40px;
+	font-size: 14px;
+}
+
+
+.titles2 h3{
+	margin-left: 16px;
+	margin-top: 6px;
+	color: #fff;
+	font-size: 15px;
+}
+.titles2 h4{
+	font-size: 15px;
+}
+.adminimages2{
+	margin-bottom: 10px;
+	margin-top: 5px;
+	float:left;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+	margin-right: 5px;
+}.adminimages3{
+	margin-bottom: 30px;
+	margin-top: 5px;
+	float:left;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+	margin-right: 5px;
+}
+.cyip{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	float:left;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+	margin-right: 5px;
+}
+.inner7{
+	margin-top: 10px;
+}
+
+
+/****bars for admin views****/
+
+.yellowtitles{
+	margin-top: 50px;
+	text-align: center;
+	margin-bottom: 15px;
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #ffcf00;
+	background: url('/resources/rubbergrip.png');
+	height: 80px;
+}
+.yellowtitles2{
+	margin-top: 50px;
+	text-align: center;
+	margin-left: -16px;
+	padding: 6px;
+	margin-right: -17px;
+	color: #ffcf00;
+	background: url('/resources/rubbergrip.png');
+	height: 80px;
+}
+.yellowtitles2 h2{
+	margin-top: 0px;
+	color: #ffcf00;
+	margin-top: 12px;
+	font-size: 35px;
+}
+.yellowtitles h2{
+	margin-top: 0px;
+	color: #ffcf00;
+	margin-top: 12px;
+	font-size: 35px;
+}
+.yellowtitles h3{
+	color: #ffcf00;
+	margin-top: 14px;
+	font-size: 25px;
+}
+.yellowtitles h4{
+	color: #ffcf00;
+	margin-top: 14px;
+	font-size: 20px;
+}
+/*********** Accorion *********************/
+
+ul.accordion>li>div.title{
+	background: url('/resources/rubbergrip.png');
+	border: none;
+}
+
+ul.accordion>li>div.title h3{
+	text-align: center;
+	font-size: 25px;
+	color: #ffcf00;
+
+}
+
+
+ul.accordion>li.active{
+	border-top: 3px solid #fff !important;
+}
+
+.accordian{
+	margin-top: 25px;
+	padding: 0px !important;
+}
+
+.accordion{
+	border:none;
+}
+
+
+ul.accordion>li.active .title{
+	width: 100%;
+	color:#000;
+	background: url('/resources/rubbergrip.png');
+}
+
+
+ul.accordion>li.active .content{
+	background: #FFF8F0;
+	margin: 0 auto;
+	width: 95%;
+	display:block;
+}
+
+
+/*********** Advising *********************/
+
+.undergrad{
+	float:left;
+	padding-right: 20px;
+	padding-bottom: 15px;
+
+}
+.grad{
+	float:left;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	line-height: 30px;
+	margin-bottom: 30px;
+
+}
+
+.innews{
+	height: 300px;
+	margin-right: 15px;
+}
+.undergradcenter{
+	text-align: center;
+}
+
+.table{
+	text-align: center;
+	margin: 0 auto;
+}
+
+table{
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+
+.button{
+	background: #000;
+
+}
+
+.button.yellow{
+	background-color: rgb(255,184,55);
+	border: 1px solid rgb(196,127,16);
+}
+
+.button.yellow:hover{
+	background-color: rgb(255,153,40);
+}
+.pricing-table{
+	margin-bottom: 3px;
+}
+
+table tbody tr:nth-child(even){
+	background: #FFF8F0;
+}
+
+/**********Archived Properties for Events / News*************/
+.open{
+	margin-top: 50px;
+	/*margin-bottom: 50px;*/
+	min-height: 150px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+
+.open2{
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 50px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.open3{
+	margin-top: 0px;
+	margin-bottom: 50px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.open4{
+	margin-top: 0px;
+	margin-bottom: 50px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.open5{
+	margin-top: 0px;
+	margin-bottom: 50px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.open6{
+	margin-top: 0px;
+	margin-bottom: 50px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+
+
+
+.content{
+	line-height: 20px;
+	padding-bottom: 20px;
+}
+
+.content2{
+	line-height: 20px;
+	padding-bottom: 20px;
+} 
+
+.generalinfo{
+	line-height: 30px;
+}
+.small{
+	margin-top: 30px;
+	min-height: 200px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+.small2{
+	min-height: 250px;
+	background-color: #FFF8F0;
+	/*-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;*/
+	border: solid #000 1px;
+	border-bottom: none;
+}
+.small3{
+	min-height: 300px;
+	background-color: #FFF8F0;
+	/*-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;*/
+	border: solid #000 1px;
+	border-bottom: none;
+}
+.small2:first-child{
+	border-left: none;
+}
+.small2:last-child{
+	border-right: none;
+}
+.compsmall{
+	margin-top: 50px;
+	min-height: 215px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+.constructsmall{
+	margin-top: 50px;
+	min-height: 258px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+.bstoms{
+	margin-top: 50px;
+	min-height: 300px;
+	background-color: #FFF8F0;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+.advisors{
+	text-align: center;
+}
+
+
+/******Pricing table + buttons *********/
+.pricing-table{
+	margin-bottom: 15px;
+}
+.pricing-table .bullet-item{
+	background-color: #FFF8F0;
+}
+
+.pricing-table .price{
+	background-color: #FFF8F0;
+	border-bottom: dotted 2px #ddd;
+}
+
+
+.button.secondary{
+	background-color: #ddd;
+}
+
+.button.secondary:hover{
+	background-color: #333;
+	color: white;
+}
+
+.interactive-map{
+	margin-right: 20px;
+	margin-bottom: 20px;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+
+.adobe{
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px !important;
+	display:block;
+}
+
+.nobold{
+	color: black;
+	font-weight: normal;
+}
+
+.email{
+	color: black;
+	font-weight: bold;
+	font-size: 12px;
+}
+.email2{
+	color: black;
+	font-weight: bold;
+	font-size: 11px;
+}
+.label.secondary{
+	margin-right: 20px;
+	padding:15px;
+}
+
+.spacer{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.abet{
+	float:left;
+	margin:20px; 
+	padding-top:55px; 
+	padding-bottom:  100px;"
+}
+
+.highslide img{
+	height: 200px;
+	float:left;
+}
+
+ul{
+	padding:20px;
+}
+.formselect{
+	border: solid 1px #ccc;
+	height: 40px;
+	padding-top: 2px;
+	font-size: 15px;
+}
+
+
+input[type="text"]{
+	height: 25px!important;
+	width: 50% !important;
+}
+
+input.twelves{
+	height: 40px !important;
+	width: 100% !important;
+
+}
+input.twelve{
+	height: 40px !important;
+}
+input.eleven{
+	height: 40px !important;
+}
+input.ten{
+	height: 40px !important;
+}
+input.nine{
+	height: 40px !important;
+}
+input.eight{
+	height: 40px !important;
+}
+input.seven{
+	height: 40px !important;
+}
+input.six{
+	height: 40px !important;
+}
+input.five{
+	height: 40px !important;
+}
+input.four{
+	height: 40px !important;
+}
+input.three{
+	height: 40px !important;
+}
+.custom radio{
+	padding-right: 20px;
+}
+.italicize{
+	font-style: italic;
+}
+.has-tip{
+	color: #000;
+	font-weight: normal;
+}
+.has-tip:hover{
+	color: #808080;
+}
+@media only screen and (max-width: 1279px) and (min-width: 768px) {
+	.icons{
+			text-align:left;
+	}
+	.nav-bar>li.has-flyout>a.flyout-toggle{
+		display:block;
+	}
+	.header2{
+		margin-top: 10px;
+	}
+	.nav-bar>li{
+		padding-left: 0px;
+		padding-right: 0px;
+	}	
+
+	.titles2 h3{
+		font-size: 13px;
+	}
+	.innercontent b{
+		font-size: 12px!important;
+	}
+	.innercontent a{
+		font-size: 12px!important;
+	}
+}
+@media only screen and (max-width: 930px){
+	.megamenu > li > a {
+		font-size: 8px;
+	}
+}
+
+
+@media only screen and (max-width: 767px){
+	.events{
+		min-height: 400px;
+		padding-bottom: 20px;
+	}
+	.headerAboutinner{
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.eventsinner{
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.newsinner{
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+	.footer{
+		padding-bottom: 10px;
+	}
+	.headerImages img{
+		margin-bottom: -5px;
+	}
+	.defenseSeminarsTitles a{
+		font-weight: bold;
+		font-size: 15px;
+		padding-right: 0px;
+		padding-left: 0px;
+		color: #fff;
+	}
+	.defenseSeminarsTitles a:first-child{
+	padding-right: 5px;
+	}
+	.defenseSeminarsTitles a:last-child{
+		padding-left: 5px;
+	}
+	.interactive-map{
+		margin: 0px;
+		text-align: center;
+	}
+	.undergrad{
+		text-align: center;
+	}
+	.newstitles{
+	height: 70px !important;
+	}
+	.whitebox{
+		height: 320px;
+	}
+	.academicBox{
+		height: 250px!important;
+	}
+	.newstitles h4{
+	margin-top: 2px;
+	color: #fff;
+	font-size: 15px;
+	}
+	.nav-bar>li.has-flyout>a.flyout-toggle{
+		display:block;
+	}
+	.headerAbout p{
+	padding-top: 30px;
+
+	}
+	.innercontent{
+		padding-top: 0px!important;
+	}
+	.innercontent b{
+		font-size: 12px!important;
+	}
+	.nav-bar>li{
+		border-color: #555;
+	}
+
+	.nav-bar>li:last-child{
+		border-color: #555;
+	}
+
+}
+@media only screen and (min-width: 1800px) {
+	.whiteMenu{
+		width: 81%;
+		margin: 0 auto;
+	}
+	.headerImages img{
+	    width: 81%;
+	    margin: 0 auto;
+	}
+	div.orbit, div.orbit-wrapper{
+		width: 90% !important;
+		margin: 0 auto;
+	}
+	.navigation{
+		width: 81%;
+		margin: 0 auto;
+	}
+	.sublist{
+		width: 81%;
+		margin: 0 auto;
+	}
+	div.orbit-wrapper div.slider-nav span.left{
+		left: 150px !important;
+	}
+	div.orbit-wrapper div.slider-nav span.right{
+		right: 150px !important;
+	}
+}
+.sammonsTop{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+.sammonsTop h1{
+	font-size: 23px;
+}
+.sammonsTop h2{
+	font-size: 18px;
+}
+.gold{
+	font-size: 24px;
+	font-weight: bold;
+	color: #fcbe09!important;
+}
