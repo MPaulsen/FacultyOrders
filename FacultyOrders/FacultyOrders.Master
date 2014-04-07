@@ -1,9 +1,13 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FacultyOrders.master.cs" Inherits="FacultyOrders.FacultyOrders" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" type="text/css" href="foundation.min.css" />
+    <link rel="stylesheet" type="text/css" href="app.css" />
+    
     <title>Site Title</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -12,12 +16,19 @@
     <form id="headerForm" runat="server">
         <div>
         <asp:ContentPlaceHolder ID="Header" runat="server">
-            
+            <div class="row">
+              <div class="twelve columns header hide-for-small">
+                <a href = "index.php"><img src="resources/headerCECS2.png" alt="College of Engineering & Computer Science"/></a>
+            </div>
+            <div class="twelve columns mobilececs show-for-small">
+                <a href = "index.php"><img src="resources/mobilececs.png" alt="College of Engineering & Computer Science"/></a>
+            </div>
+</div>
+            <img src="resources/facultyheader2.png" class="headerImg"/>
         </asp:ContentPlaceHolder>
     </div>
     <div>
         <asp:ContentPlaceHolder ID="Body" runat="server">
-            
         </asp:ContentPlaceHolder>
     </div>
     </form>

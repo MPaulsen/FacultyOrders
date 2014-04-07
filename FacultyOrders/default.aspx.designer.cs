@@ -13,6 +13,15 @@ namespace FacultyOrders {
     public partial class _default {
         
         /// <summary>
+        /// lblStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
+        /// RegExEmailValid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExEmailValid;
+        
+        /// <summary>
         /// txtAccountNumber control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace FacultyOrders {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAccountNumber;
+        
+        /// <summary>
+        /// RegExAccountValid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExAccountValid;
         
         /// <summary>
         /// chkUrgent control.
@@ -85,24 +112,6 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
         
         /// <summary>
-        /// btnSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
-        /// lblStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStatus;
-        
-        /// <summary>
         /// revNumber control.
         /// </summary>
         /// <remarks>
@@ -112,21 +121,12 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator revNumber;
         
         /// <summary>
-        /// RegExEmailValid control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExEmailValid;
-        
-        /// <summary>
-        /// RegExAccountValid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExAccountValid;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }
