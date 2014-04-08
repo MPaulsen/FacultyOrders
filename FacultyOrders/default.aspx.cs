@@ -34,7 +34,7 @@ namespace FacultyOrders
                     command.Parameters.Clear();
                     try
                     {
-                        command.CommandText = "INSERT INTO Orders Values(GETDATE(), NULL, NULL, NULL, @account, @urgent, @Comp, @Vendor, @Desc, NULL, NULL, @Name, @Email, @Amount, NULL, NULL, NULL)";
+                        command.CommandText = "INSERT INTO Orders Values(GETDATE(), NULL, NULL, NULL, @account, @urgent, @Comp, @Vendor, @Desc, NULL, @Name, @Email, @Amount, NULL, NULL, NULL, NULL)";
                         command.Parameters.Add(new SqlParameter("account", txtAccountNumber.Text.ToString()));
                         command.Parameters.Add(new SqlParameter("urgent", (chkUrgent.Checked)?1:0));
                         command.Parameters.Add(new SqlParameter("comp", (chkComp.Checked)?1:0));
@@ -52,9 +52,17 @@ namespace FacultyOrders
 
                         lblStatus.Text = "Order submitted successfully.";
 
+                        txtAccountNumber.Text = "";
+                        txtAmount.Text = "";
+                        txtEmail.Text = "";
+                        txtItemDesc.Text = "";
+                        txtName.Text = "";
+                        txtVendor.Text = "";
+
                     }
-                    catch
+                    catch (Exception excep)
                     {
+                        String strExcep = excep.ToString();
                         command.Connection.Close();
                     }
                 }

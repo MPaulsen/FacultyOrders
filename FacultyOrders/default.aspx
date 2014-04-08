@@ -13,7 +13,7 @@
             </div>
             <div class="innercontent">
                 <div>
-                    <asp:Label ID="lblStatus" runat="server" />
+                    <asp:Label ID="lblStatus" ForeColor="Red" runat="server" />
                 </div>
 
 
