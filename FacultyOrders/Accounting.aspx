@@ -4,27 +4,28 @@
 
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="Body">
-    <div>
-        <asp:GridView runat="server" ID="grdOrders" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdOrders_Sorting">
+    <div> <br />
+        <asp:GridView runat="server" ID="grdOrders" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdOrders_Sorting" OnRowCommand="gv_RowCommand">
             <Columns>
-                <asp:BoundField DataField="orderID" HeaderText="ID" SortExpression="orderID"/>
-                <asp:BoundField DataField="Order_Request_Date" HeaderText="Date Requested" SortExpression="Order_Request_Date"/>
-                <asp:BoundField DataField="Urgent" HeaderText="Urgent" SortExpression="Urgent"/>
-                <asp:BoundField DataField="Requestor" HeaderText="Requestor" SortExpression="Requestor"/>
-                <asp:BoundField DataField="Requestor_Email" HeaderText="Email" SortExpression="Requestor_Email"/>
-                <asp:BoundField DataField="Account_Number" HeaderText="Acct Number" SortExpression="Account_Number"/>
-                <asp:BoundField DataField="Vendor" HeaderText="Vendor" SortExpression="Vendor"/>
-                <asp:BoundField DataField="Computer_Purchase" HeaderText="Computer?" SortExpression="Computer_Purchase"/>
-                <asp:BoundField DataField="Item_Desc" HeaderText="Description" SortExpression="Item_Desc"/>
-                <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount"/>
-                <asp:BoundField DataField="Pre_Order_Notes" HeaderText="PreOrder Notes" SortExpression="Pre_Order_Notes"/>
-                <asp:BoundField DataField="Approval_Date" HeaderText="Approved" SortExpression="Approval_Date"/>
-                <asp:BoundField DataField="Account_Code" HeaderText="Acct Code" SortExpression="Account_Code"/>
-                <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number"/>
-                <asp:BoundField DataField="Purchase_Date" HeaderText="Purchased" SortExpression="Purchase_Date"/>
-                <asp:BoundField DataField="Post_Order_Notes" HeaderText="PostOrder Notes" SortExpression="Post_Order_Notes"/>
-                <asp:BoundField DataField="Receive_Date" HeaderText="Received" SortExpression="Receive_Date"/>
-                <asp:ButtonField Text="Edit"/>
+                <asp:BoundField DataField="OrderID" HeaderText="ID" SortExpression="orderID" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="OrderRequestDate" HeaderText="Date Requested" SortExpression="Order_Request_Date" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="URGENT" HeaderText="Urgent" SortExpression="Urgent" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="Requestor" HeaderText="Requestor" SortExpression="Requestor" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="RequestorEmail" HeaderText="Email" SortExpression="Requestor_Email" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="AccountNumber" HeaderText="Acct Number" SortExpression="Account_Number" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="Vendor" HeaderText="Vendor" SortExpression="Vendor" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="ComputerPurchase" HeaderText="Computer?" SortExpression="Computer_Purchase" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="ItemDesc" HeaderText="Description" SortExpression="Item_Desc" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="PreOrderNotes" HeaderText="PreOrder Notes" SortExpression="Pre_Order_Notes" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="ApprovalDate" HeaderText="Approved" SortExpression="Approval_Date" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="Account_Code" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="Purchase_Date" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="Post_Order_Notes" ItemStyle-CssClass="col"/>
+                <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="Receive_Date" ItemStyle-CssClass="col"/>
+                <asp:ButtonField Text="Edit" CommandName="cmdEdit"/>
+                <asp:ButtonField Text="Approve" CommandName="cmdApprove"/>
             </Columns>
         </asp:GridView>
     </div>

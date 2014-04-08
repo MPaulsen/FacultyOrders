@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="foundation.min.css" />
     <link rel="stylesheet" type="text/css" href="app.css" />
     
-    <title>Site Title</title>
+    <title>CECS: Faculty Orders</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -23,7 +23,8 @@
             <div class="twelve columns mobilececs show-for-small">
                 <a href = "index.php"><img src="resources/mobilececs.png" alt="College of Engineering & Computer Science"/></a>
             </div>
-</div>
+</div>
+
             <img src="resources/facultyheader2.png" class="headerImg"/>
         </asp:ContentPlaceHolder>
     </div>

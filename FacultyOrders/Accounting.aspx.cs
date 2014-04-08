@@ -69,5 +69,23 @@ namespace FacultyOrders
             }
             return ViewState["sortDirection"].ToString();
         }
+
+        protected void gv_RowCommand(Object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "cmdEdit")
+            {
+                string script = "alert(\"Edit!\");";
+                ScriptManager.RegisterStartupScript(this, GetType(),
+                                      "ServerControlScript", script, true);
+            }
+
+            else if (e.CommandName == "cmdApprove")
+            {
+                string script = "alert(\"Approve!\");";
+                ScriptManager.RegisterStartupScript(this, GetType(),
+                                      "ServerControlScript", script, true);
+            }
+
+        }
     }
 }

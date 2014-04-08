@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Accounting.aspx" />
+    <Content Include="app.css" />
     <Content Include="FacultyOrders.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -68,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.aspx" />
+    <Content Include="FacultyOrders.Master.css" />
+    <Content Include="foundation.min.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
