@@ -31,22 +31,22 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.RadioButtonList rdoDateView;
         
         /// <summary>
-        /// Start control.
+        /// tblDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Start;
+        protected global::System.Web.UI.WebControls.Table tblDate;
         
         /// <summary>
-        /// FromCal control.
+        /// txtFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FromCal;
+        protected global::System.Web.UI.WebControls.TextBox txtFrom;
         
         /// <summary>
         /// FromCalendar control.
@@ -58,22 +58,40 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.Calendar FromCalendar;
         
         /// <summary>
-        /// To control.
+        /// txtTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox To;
+        protected global::System.Web.UI.WebControls.TextBox txtTo;
         
         /// <summary>
-        /// ToCal control.
+        /// ToCalendar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ToCal;
+        protected global::System.Web.UI.WebControls.Calendar ToCalendar;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// FromCal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button FromCal;
         
         /// <summary>
         /// grdOrders control.

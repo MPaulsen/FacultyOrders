@@ -14,8 +14,10 @@ namespace FacultyOrders
     {
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
-        protected void Page_Load(object sender, EventArgs e)
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
         {
+            CalenderChange();
             loadGrid();
         }
 
@@ -26,8 +28,11 @@ namespace FacultyOrders
             {
                 try
                 {
-                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS  NULL " + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "") + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "");
-                    //if (rdoDateView.SelectedIndex == 3)
+                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS  NULL "
+                        + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "")
+                        + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
+                        + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
+                        + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" :"");
                     lblError.Text = cmd.CommandText;
                     cmd.Connection = con;
                     da = new SqlDataAdapter(cmd);
@@ -98,8 +103,17 @@ namespace FacultyOrders
         }    
         protected void IndexChanged(Object sender, EventArgs e){
             lblError.Text = "You selected" + rdoDateView.SelectedIndex.ToString();
-            if (rdoDateView.SelectedIndex == 3)
-                ;
+            if (rdoDateView.SelectedIndex == 1)
+            {
+                tblDate.Visible = true;
+                ToCalendar.SelectedDate = DateTime.Today;
+                ToCalendar.VisibleDate = DateTime.Today;
+                FromCalendar.SelectedDate = DateTime.Today.AddDays(-14);
+                FromCalendar.VisibleDate = DateTime.Today.AddDays(-14);
+                CalenderChange();
+            }
+            else
+                tblDate.Visible = false;
         }
 
         protected void FromCal_Click(object sender, EventArgs e)
@@ -107,18 +121,44 @@ namespace FacultyOrders
             if (FromCalendar.Visible == false)
             {
                 FromCalendar.Visible = true;
+                ToCalendar.Visible = true;
                 FromCal.Text = "Close Calender";
             }
             else
             {
                 FromCalendar.Visible = false;
+                ToCalendar.Visible = false;
                 FromCal.Text = "Open Calender";
             }
         }
         
-        protected void ToCal_Click(object sender, EventArgs e)
+
+
+        protected void CalenderChange(object sender, EventArgs e)
         {
-            ;
+            txtFrom.Text = FromCalendar.SelectedDate.ToShortDateString().ToString();
+            txtTo.Text = ToCalendar.SelectedDate.ToShortDateString().ToString();
+        }
+
+        protected void CalenderChange()
+        {
+            txtFrom.Text = FromCalendar.SelectedDate.ToShortDateString().ToString();
+            txtTo.Text = ToCalendar.SelectedDate.ToShortDateString().ToString();
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            DateTime dtf = new DateTime(), dtt = new DateTime();
+            if(DateTime.TryParse(txtFrom.Text, out dtf) && DateTime.TryParse(txtTo.Text, out dtt))
+            {
+                FromCalendar.SelectedDate = dtf;
+                FromCalendar.VisibleDate = dtf;
+                if (dtf > dtt)
+                    dtt = dtf;
+                ToCalendar.SelectedDate = dtt;
+                ToCalendar.VisibleDate = dtt;
+            }
+            CalenderChange();
         }
     }
 }
