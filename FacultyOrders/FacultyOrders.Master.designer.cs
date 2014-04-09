@@ -76,6 +76,24 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.LinkButton lbLogout;
         
         /// <summary>
+        /// hlAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlAdmin;
+        
+        /// <summary>
+        /// hlUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlUser;
+        
+        /// <summary>
         /// Body control.
         /// </summary>
         /// <remarks>

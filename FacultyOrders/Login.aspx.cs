@@ -46,7 +46,7 @@ namespace FacultyOrders
                     else if(role.Equals("Accountant"))
                         Response.Redirect("Accounting.aspx"); 
                     else
-                        Response.Redirect("Register.aspx"); 
+                        Response.Redirect("Administration.aspx"); 
                     
                     
                     /*

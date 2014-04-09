@@ -18,6 +18,11 @@ namespace FacultyOrders
                 lblLogInMess.Text = "Welcome " + Session["User"] + ". | ";
                 lblLogInMess.Visible = true;
                 lbLogout.Visible = true;
+                if (Session["Role"].ToString() == "Admin")
+                {
+                    hlAdmin.Visible = true;
+                    hlUser.Visible = true;
+                }
             }
         }
 

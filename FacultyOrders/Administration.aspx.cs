@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace FacultyOrders
 {
-    public partial class Accounting : System.Web.UI.Page
+    public partial class Administration : System.Web.UI.Page
     {
         int numRecords;
         DataTable dt = new DataTable();

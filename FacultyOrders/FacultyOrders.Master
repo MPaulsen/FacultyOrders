@@ -37,7 +37,9 @@
 
           
             
-            <asp:LinkButton Text ="Logout" ID="lbLogout"  runat="server" Visible="false" OnClick="lbLogout_Click"></asp:LinkButton>
+            <asp:LinkButton Text ="Logout" ID="lbLogout"  runat="server" Visible="false" OnClick="lbLogout_Click" CausesValidation="false"></asp:LinkButton>
+            <asp:HyperLink Text ="| Admin Page | " ID ="hlAdmin" runat="server" Visible="false" NavigateUrl="~/Administration.aspx"></asp:HyperLink>
+            <asp:HyperLink Text ="Add User  " ID ="hlUser" runat="server" Visible="false" NavigateUrl="~/Register.aspx"></asp:HyperLink>
 
 
         </div>

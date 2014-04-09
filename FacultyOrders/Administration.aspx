@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/FacultyOrders.Master" AutoEventWireup="true" CodeBehind="Accounting.aspx.cs" Inherits="FacultyOrders.Accounting" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/FacultyOrders.Master" AutoEventWireup="true" CodeBehind="Administration.aspx.cs" Inherits="FacultyOrders.Administration" EnableEventValidation="false" %>
 
 
 
