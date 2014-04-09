@@ -23,6 +23,7 @@ namespace FacultyOrders
 
         private void loadGrid()
         {
+            
             SqlCommand cmd = new SqlCommand();
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
             {
@@ -46,6 +47,10 @@ namespace FacultyOrders
                 {
                     lblError.Text = e.ToString();
                 }
+               
+                if (Session["Role"] != null)
+                    lblError.Text = Session["Role"].ToString();
+                
 
             }
         }
