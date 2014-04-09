@@ -17,17 +17,17 @@
         <div>
         <asp:ContentPlaceHolder ID="Header" runat="server">
             <div class="row">
-              <div class="twelve columns header hide-for-small">
-                <a href = "index.php"><img src="resources/headerCECS2.png" alt="College of Engineering & Computer Science"/></a>
+                  <div class="twelve columns header hide-for-small">
+                    <a href = "index.php"><img src="resources/headerCECS2.png" alt="College of Engineering & Computer Science"/></a>
+                </div>
+                <div class="twelve columns mobilececs show-for-small">
+                    <a href = "index.php"><img src="resources/mobilececs.png" alt="College of Engineering & Computer Science"/></a>
+                </div>
             </div>
-            <div class="twelve columns mobilececs show-for-small">
-                <a href = "index.php"><img src="resources/mobilececs.png" alt="College of Engineering & Computer Science"/></a>
-            </div>
-</div>
-
             <img src="resources/facultyheader2.png" class="headerImg"/>
         </asp:ContentPlaceHolder>
     </div>
+        <div style="text-align:center"><a style="align-self:center" href="Login.aspx">Accounting & Purchaser Login</a></div>
     <div>
         <asp:ContentPlaceHolder ID="Body" runat="server">
         </asp:ContentPlaceHolder>
