@@ -24,6 +24,7 @@
                     <a href = "index.php"><img src="resources/mobilececs.png" alt="College of Engineering & Computer Science"/></a>
                 </div>
             </div>
+
             <img src="resources/facultyheader2.png" class="headerImg"/>
         </asp:ContentPlaceHolder>
     </div>

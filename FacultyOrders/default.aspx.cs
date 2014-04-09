@@ -89,8 +89,9 @@ namespace FacultyOrders
                         command.Connection.Close();
 
                     }
-                    catch
+                    catch (Exception excep)
                     {
+                        String strExcep = excep.ToString();
                         command.Connection.Close();
                     }
                 }

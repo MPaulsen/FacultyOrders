@@ -8,8 +8,12 @@
     -webkit-font-smoothing:antialiased;
     line-height: 20px;
 	color: black;
-
 }
+
+.center {
+    text-align:center;
+}
+
 
 .Form {
     vertical-align:initial;
