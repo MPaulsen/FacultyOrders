@@ -12,13 +12,25 @@ namespace FacultyOrders
 {
     public partial class Accounting : System.Web.UI.Page
     {
+        int numRecords;
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-                ;
             loadGrid();
+            disableApprove();
+        }
+
+        private void disableApprove()
+        {
+            int i = 0;
+            int end = numRecords;
+            for (i = 0; i < end; i++)
+            {
+                if (!(grdOrders.Rows[i].Cells[11].Text.Equals("&nbsp;")))
+                    grdOrders.Rows[i].Cells[18].Enabled = false;
+            }
+            
         }
 
         private void loadGrid()
@@ -31,8 +43,10 @@ namespace FacultyOrders
                 da = new SqlDataAdapter(cmd);
                 con.Open();
                 da.Fill(dt);
+                numRecords = dt.Rows.Count;
                 grdOrders.DataSource = dt;
                 grdOrders.DataBind();
+                
                 con.Close();
             }
         }

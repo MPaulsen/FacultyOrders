@@ -6,7 +6,7 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="Body">
     <div>
         <br />
-        <div class="row">
+        <div>
             <div class="columns notabs">
                 <div class="titles">
                     <h3>Purchases</h3>
@@ -16,7 +16,7 @@
 
                     <asp:RadioButtonList ID="rdoDateView" runat="server" RepeatDirection="Horizontal" RepeatLayout="table" OnSelectedIndexChanged="IndexChanged" AutoPostBack="true">
 
-                        <asp:ListItem>All Items</asp:ListItem>
+                        <asp:ListItem Selected="True">All Items</asp:ListItem>
                         <asp:ListItem>Specific Date Range:</asp:ListItem>
                         <asp:ListItem>Items not ordered</asp:ListItem>
                         <asp:ListItem>Ordered, not recieved</asp:ListItem>
@@ -62,6 +62,16 @@
                         <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="Purchase_Date" ItemStyle-CssClass="col" />
                         <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="Post_Order_Notes" ItemStyle-CssClass="col" />
                         <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="Receive_Date" ItemStyle-CssClass="col" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="false" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="Delete" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you wish to delete this order?')" OnClick="btnDelete_Click" CausesValidation="false" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>

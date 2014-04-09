@@ -31,16 +31,16 @@ namespace FacultyOrders
                 String role = Session["Role"].ToString();
                 if (role.Equals("PurchaserComp"))
                     viewIsComputer = 1;
-                else if(!(role.Equals("PurchaserOther")))
+                else if (!(role.Equals("PurchaserOther")))
                 {
-                    if(role.Equals("Accountant"))
-                        Response.Redirect("Accounting.aspx"); 
+                    if (role.Equals("Accountant"))
+                        Response.Redirect("Accounting.aspx");
                     else
-                        Response.Redirect("Register.aspx"); 
+                        Response.Redirect("Register.aspx");
                 }
             }
 
-            
+
             SqlCommand cmd = new SqlCommand();
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
             {
@@ -50,7 +50,7 @@ namespace FacultyOrders
                         + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "")
                         + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
-                        + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" :"");
+                        + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "");
                     lblError.Text = cmd.CommandText;
                     cmd.Connection = con;
                     da = new SqlDataAdapter(cmd);
@@ -64,10 +64,40 @@ namespace FacultyOrders
                 {
                     lblError.Text = e.ToString();
                 }
-               
-               
+
+
 
             }
+        }
+
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            //Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            Session["OrderID"] = gvr.Cells[0].Text;
+
+            Response.Redirect("EditOrder.aspx");
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+
+
+            nonQuery(" DELETE FROM Orders WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
@@ -120,8 +150,9 @@ namespace FacultyOrders
                 ScriptManager.RegisterStartupScript(this, GetType(),
                                       "ServerControlScript", script, true);
             }
-        }    
-        protected void IndexChanged(Object sender, EventArgs e){
+        }
+        protected void IndexChanged(Object sender, EventArgs e)
+        {
             lblError.Text = "You selected" + rdoDateView.SelectedIndex.ToString();
             if (rdoDateView.SelectedIndex == 1)
             {
@@ -151,7 +182,7 @@ namespace FacultyOrders
                 FromCal.Text = "Open Calender";
             }
         }
-        
+
 
 
         protected void CalenderChange(object sender, EventArgs e)
@@ -169,7 +200,7 @@ namespace FacultyOrders
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             DateTime dtf = new DateTime(), dtt = new DateTime();
-            if(DateTime.TryParse(txtFrom.Text, out dtf) && DateTime.TryParse(txtTo.Text, out dtt))
+            if (DateTime.TryParse(txtFrom.Text, out dtf) && DateTime.TryParse(txtTo.Text, out dtt))
             {
                 FromCalendar.SelectedDate = dtf;
                 FromCalendar.VisibleDate = dtf;
@@ -179,6 +210,34 @@ namespace FacultyOrders
                 ToCalendar.VisibleDate = dtt;
             }
             CalenderChange();
+        }
+
+
+        protected void nonQuery(String qS)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Parameters.Clear();
+                    try
+                    {
+                        command.CommandText = qS;
+                        command.Connection = connection;
+                        command.Connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        command.Connection.Close();
+
+                    }
+                    catch
+                    {
+                        command.Connection.Close();
+                    }
+                }
+            }
+
         }
     }
 }
