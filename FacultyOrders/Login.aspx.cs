@@ -32,13 +32,13 @@ namespace FacultyOrders
             {
                 Encryption crypto = new Encryption();
 
-                string password = dbQuery("SELECT Password FROM Users WHERE Username = '" + txtUser.Text.ToString() + "'");
+                string password = dbControls.dbQuery("SELECT Password FROM Users WHERE Username = '" + txtUser.Text.ToString() + "'");
 
                 if (crypto.Decrypt(password) == txtPass.Text.ToString())
                 {
                     string user = txtUser.Text.ToString();
-                    Session["User"] = dbQuery("SELECT FirstName FROM Users WHERE Username = '" + user + "'");
-                    Session["Role"] = dbQuery("SELECT Role FROM Users WHERE Username = '" + user + "'");
+                    Session["User"] = dbControls.dbQuery("SELECT FirstName FROM Users WHERE Username = '" + user + "'");
+                    Session["Role"] = dbControls.dbQuery("SELECT Role FROM Users WHERE Username = '" + user + "'");
                     Response.Write("Password is correct");
                     String role = Session["Role"].ToString();
                     if(role.Equals("PurchaserComp") || role.Equals ("PurchaserOther"))
