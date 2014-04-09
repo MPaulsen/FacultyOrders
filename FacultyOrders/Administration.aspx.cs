@@ -45,12 +45,8 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
-
-
             dbControls.nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
-            Response.Redirect(Request.RawUrl);
         }
 
         private void loadGrid()
@@ -58,7 +54,13 @@ namespace FacultyOrders
             SqlCommand cmd = new SqlCommand();
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
             {
-                cmd.CommandText = "Select * FROM Orders";
+                cmd.CommandText = "Select * FROM Orders "
+                    + (rdoDateView.SelectedIndex == 1 ? "WHERE Orders.ApprovalDate IS  NULL" : "")
+                    + (rdoDateView.SelectedIndex == 2 ? "WHERE DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
+                    + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "")
+                    + (rdoDateView.SelectedIndex == 3 ? "WHERE Orders.purchaseDate IS NULL" : "")
+                    + (rdoDateView.SelectedIndex == 4 ? "WHERE Orders.purchaseDate IS NOT NULL" : "");
+
                 cmd.Connection = con;
                 da = new SqlDataAdapter(cmd);
                 con.Open();
@@ -66,7 +68,7 @@ namespace FacultyOrders
                 numRecords = dt.Rows.Count;
                 grdOrders.DataSource = dt;
                 grdOrders.DataBind();
-                
+
                 con.Close();
             }
         }
@@ -130,7 +132,66 @@ namespace FacultyOrders
 
             dbControls.nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
-            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void IndexChanged(Object sender, EventArgs e)
+        {
+            if (rdoDateView.SelectedIndex == 2)
+            {
+                tblDate.Visible = true;
+                ToCalendar.SelectedDate = DateTime.Today;
+                ToCalendar.VisibleDate = DateTime.Today;
+                FromCalendar.SelectedDate = DateTime.Today.AddDays(-14);
+                FromCalendar.VisibleDate = DateTime.Today.AddDays(-14);
+                CalenderChange();
+            }
+            else
+                tblDate.Visible = false;
+        }
+
+        protected void FromCal_Click(object sender, EventArgs e)
+        {
+            if (FromCalendar.Visible == false)
+            {
+                FromCalendar.Visible = true;
+                ToCalendar.Visible = true;
+                FromCal.Text = "Close Calender";
+            }
+            else
+            {
+                FromCalendar.Visible = false;
+                ToCalendar.Visible = false;
+                FromCal.Text = "Open Calender";
+            }
+        }
+
+
+
+        protected void CalenderChange(object sender, EventArgs e)
+        {
+            txtFrom.Text = FromCalendar.SelectedDate.ToShortDateString().ToString();
+            txtTo.Text = ToCalendar.SelectedDate.ToShortDateString().ToString();
+        }
+
+        protected void CalenderChange()
+        {
+            txtFrom.Text = FromCalendar.SelectedDate.ToShortDateString().ToString();
+            txtTo.Text = ToCalendar.SelectedDate.ToShortDateString().ToString();
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            DateTime dtf = new DateTime(), dtt = new DateTime();
+            if (DateTime.TryParse(txtFrom.Text, out dtf) && DateTime.TryParse(txtTo.Text, out dtt))
+            {
+                FromCalendar.SelectedDate = dtf;
+                FromCalendar.VisibleDate = dtf;
+                if (dtf > dtt)
+                    dtt = dtf;
+                ToCalendar.SelectedDate = dtt;
+                ToCalendar.VisibleDate = dtt;
+            }
+            CalenderChange();
         }
     }
 }

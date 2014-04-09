@@ -14,11 +14,32 @@ namespace FacultyOrders
     {
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
+        GridViewSortEventArgs ea = new GridViewSortEventArgs("Urgent", new SortDirection());
+
 
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            CalenderChange();
+            if (Session["Role"] == null)
+                Response.Redirect("/login.aspx", true);
+            else if (!(Session["Role"].ToString().Equals("PurchaserComp") || Session["Role"].ToString().Equals("PurchaserOther")))
+                Response.Redirect("/default.aspx", true);
+            if (ea == null)
+            {
+                ea = new GridViewSortEventArgs("Urgent", new SortDirection());
+                ea.SortExpression = "Urgent";
+
+            }
+
+            if (ViewState["sortDirection"] == null)
+                ViewState.Add("sortDirection", "ASC");
+            if (ViewState["sortExpression"] == null)
+            {
+                ViewState.Add("sortExpression", "Urgent");
+            }
+
             loadGrid();
+            grdOrders_Sorting(ea);
+
         }
 
         private void loadGrid()
@@ -95,12 +116,12 @@ namespace FacultyOrders
 
 
 
-            nonQuery(" DELETE FROM Orders WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+            nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
             Response.Redirect(Request.RawUrl);
         }
 
-        protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
+        protected void grdOrders_Sorting(GridViewSortEventArgs e)
         {
             DataTable dtSortTable = grdOrders.DataSource as DataTable;
             if (dtSortTable != null)
@@ -111,6 +132,11 @@ namespace FacultyOrders
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
+        }
+
+        protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            ea = e;
         }
 
         private string getSortDirectionString()

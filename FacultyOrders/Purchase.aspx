@@ -44,36 +44,37 @@
                         </asp:TableRow>
 
                     </asp:Table>
+
+                    <asp:GridView runat="server" ID="grdOrders" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdOrders_Sorting" OnRowCommand="gv_RowCommand">
+                        <Columns>
+                            <asp:BoundField DataField="OrderID" HeaderText="ID" SortExpression="orderID" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="OrderRequestDate" HeaderText="Date Requested" SortExpression="Order_Request_Date" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="URGENT" HeaderText="Urgent" SortExpression="Urgent" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="Requestor" HeaderText="Requestor" SortExpression="Requestor" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="AccountNumber" HeaderText="Acct Number" SortExpression="Account_Number" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="Vendor" HeaderText="Vendor" SortExpression="Vendor" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="ComputerPurchase" HeaderText="Computer?" SortExpression="Computer_Purchase" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="ItemDesc" HeaderText="Description" SortExpression="Item_Desc" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PreOrderNotes" HeaderText="PreOrder Notes" SortExpression="Pre_Order_Notes" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="Account_Code" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="Purchase_Date" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="Post_Order_Notes" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="Receive_Date" ItemStyle-CssClass="col" />
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="false" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="Delete" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you wish to delete this order?')" OnClick="btnDelete_Click" CausesValidation="false" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
                 </div>
-                <asp:GridView runat="server" ID="grdOrders" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdOrders_Sorting" OnRowCommand="gv_RowCommand">
-                    <Columns>
-                        <asp:BoundField DataField="OrderID" HeaderText="ID" SortExpression="orderID" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="OrderRequestDate" HeaderText="Date Requested" SortExpression="Order_Request_Date" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="URGENT" HeaderText="Urgent" SortExpression="Urgent" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="Requestor" HeaderText="Requestor" SortExpression="Requestor" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="AccountNumber" HeaderText="Acct Number" SortExpression="Account_Number" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="Vendor" HeaderText="Vendor" SortExpression="Vendor" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="ComputerPurchase" HeaderText="Computer?" SortExpression="Computer_Purchase" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="ItemDesc" HeaderText="Description" SortExpression="Item_Desc" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="PreOrderNotes" HeaderText="PreOrder Notes" SortExpression="Pre_Order_Notes" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="Account_Code" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="Purchase_Date" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="Post_Order_Notes" ItemStyle-CssClass="col" />
-                        <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="Receive_Date" ItemStyle-CssClass="col" />
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="false" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:Button ID="Delete" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you wish to delete this order?')" OnClick="btnDelete_Click" CausesValidation="false" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
             </div>
         </div>
     </div>
