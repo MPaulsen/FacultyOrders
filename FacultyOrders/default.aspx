@@ -4,8 +4,6 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="Body">
 
-
-
     <div class="row">
         <div class="twelve columns notabs">
             <div class="titles">
@@ -15,9 +13,6 @@
                 <div>
                     <asp:Label ID="lblStatus" ForeColor="Red" runat="server" />
                 </div>
-
-
-
 
                 <div>
                     Name:
@@ -78,11 +73,9 @@
                 <div>
                     <asp:FileUpload runat="server" />
                 </div>
-                <div>
+                <div><br />
                     <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" />
                 </div>
-
-
             </div>
         </div>
     </div>
