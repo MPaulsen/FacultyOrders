@@ -53,6 +53,15 @@ namespace FacultyOrders
 
                         lblStatus.Text = "Order submitted successfully.";
 
+                        EECSMail mailbox = new EECSMail("taeiantwist@gmail.com", "New Faculty Order",
+                            @"A new faculty order has been placed.
+                              Name: " + txtName.Text.ToString() + @"\n
+                              Vendor: " + txtVendor.Text.ToString() + @"\n
+                              Ammount: " + txtAmount.Text.ToString() + @"\n
+                              Item Description: " + txtItemDesc.Text.ToString() + @"\n\n
+                              Please log into the accountant view to access further order details.");
+                        mailbox.sendMail();
+
                         txtAccountNumber.Text = "";
                         txtAmount.Text = "";
                         txtEmail.Text = "";
@@ -64,64 +73,6 @@ namespace FacultyOrders
                     catch (Exception excep)
                     {
                         String strExcep = excep.ToString();
-                        command.Connection.Close();
-                    }
-                }
-            }
-        }
-
-        protected String dbQuery(String qS)
-        {
-            object result = "";
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand())
-                {
-                    command.Parameters.Clear();
-                    try
-                    {
-                        command.CommandText = qS;
-                        command.Connection = connection;
-                        command.Connection.Open();
-
-                        result = command.ExecuteScalar();
-
-                        command.Connection.Close();
-
-                    }
-                    catch (Exception excep)
-                    {
-                        String strExcep = excep.ToString();
-                        command.Connection.Close();
-                    }
-                }
-            }
-            if (result == null)
-                return "";
-            else
-                return result.ToString();
-        }
-
-        protected void nonQuery(String qS)
-        {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
-            {
-                using (SqlCommand command = new SqlCommand())
-                {
-                    command.Parameters.Clear();
-                    try
-                    {
-                        command.CommandText = qS;
-                        command.Connection = connection;
-                        command.Connection.Open();
-
-                        command.ExecuteNonQuery();
-
-                        command.Connection.Close();
-
-                    }
-                    catch
-                    {
                         command.Connection.Close();
                     }
                 }
