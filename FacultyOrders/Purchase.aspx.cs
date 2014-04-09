@@ -31,7 +31,13 @@ namespace FacultyOrders
                 String role = Session["Role"].ToString();
                 if (role.Equals("PurchaserComp"))
                     viewIsComputer = 1;
-
+                else if(!(role.Equals("PurchaserOther")))
+                {
+                    if(role.Equals("Accountant"))
+                        Response.Redirect("Accounting.aspx"); 
+                    else
+                        Response.Redirect("Register.aspx"); 
+                }
             }
 
             
@@ -40,7 +46,7 @@ namespace FacultyOrders
             {
                 try
                 {
-                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS  NULL AND ComputerPurchase =  " + viewIsComputer.ToString() + " "
+                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS NOT NULL AND ComputerPurchase =  " + viewIsComputer.ToString() + " "
                         + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "")
                         + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "

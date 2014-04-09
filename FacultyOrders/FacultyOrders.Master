@@ -7,6 +7,7 @@
 <head runat="server">
     <link rel="stylesheet" type="text/css" href="foundation.min.css" />
     <link rel="stylesheet" type="text/css" href="app.css" />
+    <link rel="stylesheet" type="text/css" href="FacultyOrders.Master.css" />
     
     <title>CECS: Faculty Orders</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -28,7 +29,18 @@
             <img src="resources/facultyheader2.png" class="headerImg"/>
         </asp:ContentPlaceHolder>
     </div>
-        <div style="text-align:center"><a style="align-self:center" href="Login.aspx">Accounting & Purchaser Login</a></div>
+        <div style="text-align:center">
+            <asp:Label ID="lblLogInMess" Text="Nothing." Visible="false"  runat="server"/>
+            <asp:HyperLink Text ="Request Page" ID="hlRequest" runat="server" NavigateUrl="~/default.aspx"></asp:HyperLink>
+            |
+            <asp:HyperLink Text ="Login" ID="hlLogin" runat="server" NavigateUrl="~/Login.aspx"></asp:HyperLink>
+
+          
+            
+            <asp:LinkButton Text ="Logout" ID="lbLogout"  runat="server" Visible="false" OnClick="lbLogout_Click"></asp:LinkButton>
+
+
+        </div>
     <div>
         <asp:ContentPlaceHolder ID="Body" runat="server">
         </asp:ContentPlaceHolder>

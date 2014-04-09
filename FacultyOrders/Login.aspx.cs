@@ -36,11 +36,19 @@ namespace FacultyOrders
 
                 if (crypto.Decrypt(password) == txtPass.Text.ToString())
                 {
-                    Session["User"] = txtUser.Text.ToString();
-                    Session["Role"] = dbQuery("SELECT Role FROM Users WHERE Username = '" + Session["User"].ToString() + "'");
+                    string user = txtUser.Text.ToString();
+                    Session["User"] = dbQuery("SELECT FirstName FROM Users WHERE Username = '" + user + "'");
+                    Session["Role"] = dbQuery("SELECT Role FROM Users WHERE Username = '" + user + "'");
                     Response.Write("Password is correct");
+                    String role = Session["Role"].ToString();
+                    if(role.Equals("PurchaserComp") || role.Equals ("PurchaserOther"))
+                        Response.Redirect("/Purchase.aspx"); 
+                    else if(role.Equals("Accountant"))
+                        Response.Redirect("Accounting.aspx"); 
+                    else
+                        Response.Redirect("Register.aspx"); 
                     
-                    //Response.Redirect("Accounting.aspx"); 
+                    
                     /*
                      * See if role is Accountant/PurchaserComp/PurchaserOther and redirect to relevant view
                      */

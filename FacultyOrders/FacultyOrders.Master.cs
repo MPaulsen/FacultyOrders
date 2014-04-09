@@ -12,6 +12,21 @@ namespace FacultyOrders
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["Role"] != null)
+            {
+                hlLogin.Visible = false;
+                lblLogInMess.Text = "Welcome " + Session["User"] + ". | ";
+                lblLogInMess.Visible = true;
+                lbLogout.Visible = true;
+            }
         }
+
+        protected void lbLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("default.aspx");
+        }
+        
+
     }
 }
