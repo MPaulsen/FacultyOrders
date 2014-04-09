@@ -96,5 +96,20 @@ namespace FacultyOrders
 
             Response.Redirect(Request.RawUrl);
         }
+
+        protected void btnExcel_Click(object sender, EventArgs e)
+        {
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment; filename=" + "OrdersExport.xls");
+            Response.ContentType = "application/excel";
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            GridView gv = new GridView();
+            gv.DataSource = dt;
+            gv.DataBind();
+            gv.RenderControl(htw);
+            Response.Write(sw.ToString());
+            Response.End();
+        }
     }
 }
