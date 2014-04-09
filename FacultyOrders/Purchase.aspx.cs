@@ -23,13 +23,24 @@ namespace FacultyOrders
 
         private void loadGrid()
         {
+            int viewIsComputer = 0;
+            if (Session["Role"] == null)
+                Response.Redirect("/Login.aspx", true);
+            else
+            {
+                String role = Session["Role"].ToString();
+                if (role.Equals("PurchaserComp"))
+                    viewIsComputer = 1;
+
+            }
+
             
             SqlCommand cmd = new SqlCommand();
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
             {
                 try
                 {
-                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS  NULL "
+                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS  NULL AND ComputerPurchase =  " + viewIsComputer.ToString() + " "
                         + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "")
                         + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
@@ -48,9 +59,7 @@ namespace FacultyOrders
                     lblError.Text = e.ToString();
                 }
                
-                if (Session["Role"] != null)
-                    lblError.Text = Session["Role"].ToString();
-                
+               
 
             }
         }
