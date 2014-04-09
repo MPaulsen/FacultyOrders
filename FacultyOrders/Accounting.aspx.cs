@@ -16,6 +16,8 @@ namespace FacultyOrders
         SqlDataAdapter da = new SqlDataAdapter();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+                ;
             loadGrid();
         }
 
@@ -70,22 +72,89 @@ namespace FacultyOrders
             return ViewState["sortDirection"].ToString();
         }
 
-        protected void gv_RowCommand(Object sender, GridViewCommandEventArgs e)
+        protected void btnEdit_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "cmdEdit")
-            {
-                string script = "alert(\"Edit!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
-            }
+            //Get the button that raised the event
+            Button btn = (Button)sender;
 
-            else if (e.CommandName == "cmdApprove")
-            {
-                string script = "alert(\"Approve!\");";
-                ScriptManager.RegisterStartupScript(this, GetType(),
-                                      "ServerControlScript", script, true);
-            }
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
 
+            Session["OrderID"] = gvr.Cells[0].Text;
+
+            Response.Redirect("EditOrder.aspx");
+
+        }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            //Get the button that raised the event
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected String dbQuery(String qS)
+        {
+            object result = "";
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Parameters.Clear();
+                    try
+                    {
+                        command.CommandText = qS;
+                        command.Connection = connection;
+                        command.Connection.Open();
+
+                        result = command.ExecuteScalar();
+
+                        command.Connection.Close();
+
+                    }
+                    catch (Exception excep)
+                    {
+                        String strExcep = excep.ToString();
+                        command.Connection.Close();
+                    }
+                }
+            }
+            if (result == null)
+                return "";
+            else
+                return result.ToString();
+        }
+
+        protected void nonQuery(String qS)
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Parameters.Clear();
+                    try
+                    {
+                        command.CommandText = qS;
+                        command.Connection = connection;
+                        command.Connection.Open();
+
+                        command.ExecuteNonQuery();
+
+                        command.Connection.Close();
+
+                    }
+                    catch
+                    {
+                        command.Connection.Close();
+                    }
+                }
+            }
         }
     }
 }
