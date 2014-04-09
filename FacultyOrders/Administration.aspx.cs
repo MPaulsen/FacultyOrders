@@ -12,11 +12,16 @@ namespace FacultyOrders
 {
     public partial class Administration : System.Web.UI.Page
     {
+        
         int numRecords;
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Role"] == null)
+                Response.Redirect("/login.aspx", true);
+            else if (!(Session["Role"].ToString().Equals("Admin")))
+                Response.Redirect("/default.aspx", true);
             loadGrid();
             disableApprove();
         }

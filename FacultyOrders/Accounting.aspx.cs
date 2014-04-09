@@ -17,6 +17,10 @@ namespace FacultyOrders
         SqlDataAdapter da = new SqlDataAdapter();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["Role"] == null)
+                Response.Redirect("/login.aspx", true);
+            if (!(Session["Role"].ToString().Equals("Accountant")))
+                Response.Redirect("/default.aspx", true);
             loadGrid();
             disableApprove();
         }
