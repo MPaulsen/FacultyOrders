@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="Accounting.aspx" />
     <Content Include="app.css" />
+    <Content Include="EditOrder.aspx" />
     <Content Include="FacultyOrders.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -87,6 +88,7 @@
     <Compile Include="Accounting.aspx.designer.cs">
       <DependentUpon>Accounting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="dbControls.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,6 +96,14 @@
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditOrder.aspx.cs">
+      <DependentUpon>EditOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditOrder.aspx.designer.cs">
+      <DependentUpon>EditOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EECSMail.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="FacultyOrders.Master.cs">
       <DependentUpon>FacultyOrders.Master</DependentUpon>
@@ -116,7 +126,7 @@
     </Compile>
     <Compile Include="Purchase.aspx.designer.cs">
       <DependentUpon>Purchase.aspx</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
