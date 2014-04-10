@@ -14,15 +14,20 @@ namespace FacultyOrders
 
             if (Session["Role"] != null)
             {
+                String role = Session["Role"].ToString();
                 hlLogin.Visible = false;
                 lblLogInMess.Text = "Welcome " + Session["User"] + ". | ";
                 lblLogInMess.Visible = true;
                 lbLogout.Visible = true;
-                if (Session["Role"].ToString() == "Admin")
+                if (role.Equals("Admin"))
                 {
                     hlAdmin.Visible = true;
                     hlUser.Visible = true;
                 }
+                else if(role.Equals("Accountant"))
+                    hlAcct.Visible=true;
+                else
+                    hlPurchase.Visible=true;
             }
         }
 

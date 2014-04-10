@@ -16,13 +16,31 @@ namespace FacultyOrders
         int numRecords;
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
-        protected void Page_Load(object sender, EventArgs e)
+        GridViewSortEventArgs ea = new GridViewSortEventArgs("Urgent", new SortDirection());
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
         {
             if (Session["Role"] == null)
                 Response.Redirect("/login.aspx", true);
             else if (!(Session["Role"].ToString().Equals("Admin")))
                 Response.Redirect("/default.aspx", true);
+            if (ea == null)
+            {
+                ea = new GridViewSortEventArgs("Urgent", new SortDirection());
+                ea.SortExpression = "Urgent";
+
+            }
+
+            if (ViewState["sortDirection"] == null)
+                ViewState.Add("sortDirection", "ASC");
+            if (ViewState["sortExpression"] == null)
+            {
+                ViewState.Add("sortExpression", "Urgent");
+            }
+
             loadGrid();
+            grdOrders_Sorting(ea);
+
             disableApprove();
         }
 
@@ -73,7 +91,7 @@ namespace FacultyOrders
             }
         }
 
-        protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
+        protected void grdOrders_Sorting(GridViewSortEventArgs e)
         {
             DataTable dtSortTable = grdOrders.DataSource as DataTable;
             if (dtSortTable != null)
@@ -85,7 +103,10 @@ namespace FacultyOrders
                 grdOrders.DataBind();
             }
         }
-
+        protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            ea = e;
+        }
         private string getSortDirectionString()
         {
             if (ViewState["sortDirection"] == null)

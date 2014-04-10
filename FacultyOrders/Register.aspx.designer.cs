@@ -103,22 +103,13 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExEmailValid;
         
         /// <summary>
-        /// txtRole control.
+        /// rdoRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRole;
-        
-        /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdoRole;
         
         /// <summary>
         /// btnSubmit control.

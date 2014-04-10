@@ -16,16 +16,32 @@ namespace FacultyOrders
         {
             if (Session["Role"] == null)
                 Response.Redirect("/login.aspx", true);
-            else if (!(Session["Role"].ToString().Equals("Accountant")))
+            else if (!(Session["Role"].ToString().Equals("Admin")))
                 Response.Redirect("/default.aspx", true);
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Encryption crypto = new Encryption();
+            String role = "";
+            switch (rdoRole.SelectedIndex)
+            {
+                case 0:
+                    role = "PurchaserComp";
+                    break;
+                case 1:
+                    role = "PurchaserOther";
+                    break;
+                case 2:
+                    role = "Accountant";
+                    break;
+                case 3:
+                    role = "Admin";
+                    break;
+            }
             nonQuery(@"INSERT INTO Users 
                         VALUES('" + txtUser.Text.ToString() + "', '" + crypto.Encrypt(txtPass.Text.ToString()) + "', '" + txtFirst.Text.ToString() + @"',
-                                '" + txtLast.Text.ToString() + "', '" + txtEmail.Text.ToString() + "', '" + txtRole.Text.ToString() + "')");
+                                '" + txtLast.Text.ToString() + "', '" + txtEmail.Text.ToString() + "', '" + role + "')");
             lblStatus.Text = "User successfully registered";
             clearForm();
         }
@@ -62,7 +78,7 @@ namespace FacultyOrders
             txtFirst.Text = "";
             txtLast.Text = "";
             txtPass.Text = "";
-            txtRole.Text = "";
+            rdoRole.SelectedIndex = 0;
             txtUser.Text = "";
         }
     }
