@@ -10,21 +10,14 @@ using System.Web.UI.WebControls;
 
 namespace FacultyOrders
 {
+    
     public partial class EditOrder : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_LoadComplete(object sender, EventArgs e)
         {
             if (Session["OrderID"] == null)
                 Response.Redirect("default.aspx");
-            if (!IsPostBack)
                 loadForm();
-            else if(Session["Role"].ToString().Equals("Admin"))
-                Response.Redirect("Administration.aspx");
-            else if(Session["Role"].ToString().Equals("Accountant"))
-                Response.Redirect("Accounting.aspx");
-            else
-                Response.Redirect("Purchase.aspx");
-
         }
 
         protected void loadForm()
@@ -52,14 +45,16 @@ namespace FacultyOrders
                                 txtEmail.Text = result[1].ToString();
                                 txtAccountNumber.Text = result[2].ToString();
                                 chkUrgent.Checked = (result[3].ToString() == "True");
+                                
                                 chkComp.Checked = (result[4].ToString() == "True");
+                                Session["wasChecked"] = (result[4].ToString() == "True");
+                                
                                 txtVendor.Text = result[5].ToString();
                                 txtItemDesc.Text = result[6].ToString();
                                 txtPONotes.Text = result[7].ToString();
                                 txtPONumber.Text = result[8].ToString();
                                 txtAmount.Text = result[9].ToString();
                             }
-                            txtName.Text = Session["UserID"].ToString();
                             command.Connection.Close();
                         }
                     }
@@ -70,6 +65,7 @@ namespace FacultyOrders
                     }
                 }
             }
+            
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -87,6 +83,23 @@ namespace FacultyOrders
                 PO_Number = '" + txtPONumber.Text.ToString() + @"',
                 Amount = '" + txtAmount.Text.ToString() + @"' 
             WHERE OrderID = '" + txtOrderID.Text.ToString() + "'");
+
+            EECSMail mail = new EECSMail(txtEmail.Text, "Your order has been changed!", "Your order has been changed!\nHere is the new order #"+ txtOrderID.Text + ".\n"
+                + "Order ID: " + txtOrderID.Text + 
+                              "\nName: " + txtName.Text.ToString() +
+                              "\nVendor: " + txtVendor.Text.ToString() +
+                              "\nAmount: $" + txtAmount.Text.ToString() +
+                              "\nAccountNum: " + txtAccountNumber.Text +
+                              "\nItem Description: " + txtItemDesc.Text.ToString() +
+                              "\nOrder notes: " + txtPONotes.Text 
+                + "\nYou will recieve another mail when your order has been updated.");
+            mail.sendMail();
+
+            if (Session["wasChecked"].ToString() != chkComp.Checked.ToString() && dbControls.dbQuery("Select ApprovalDate from Orders Where orderid = " + txtOrderID.Text)!=null)
+            {
+                dbControls.sendMailToRole((chkComp.Checked ? "PurchaserComp" : "PurchaserOther"), "An order has been transferred", "Order: " + txtOrderID.Text + " has been transferred under your control.");
+            }
+                
         }
     }
 }

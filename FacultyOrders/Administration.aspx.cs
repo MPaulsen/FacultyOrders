@@ -98,6 +98,7 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            dbControls.Delete(gvr.Cells[0].Text);
             dbControls.nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
         }
@@ -190,8 +191,9 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
             dbControls.nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+            dbControls.Approve(gvr.Cells[0].Text);
+
 
         }
 

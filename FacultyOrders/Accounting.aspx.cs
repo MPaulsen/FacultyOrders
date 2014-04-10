@@ -64,7 +64,7 @@ namespace FacultyOrders
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
 
 
-
+            dbControls.Delete(gvr.Cells[0].Text);
             dbControls.nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
         }
 
@@ -78,7 +78,7 @@ namespace FacultyOrders
                     + (rdoDateView.SelectedIndex == 2 ? "WHERE DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
                     + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "")
                     + (rdoDateView.SelectedIndex == 3 ? "WHERE Orders.purchaseDate IS NULL" : "")
-                    + (rdoDateView.SelectedIndex == 4 ? "WHERE Orders.purchaseDate IS NOT NULL" : "");
+                    + (rdoDateView.SelectedIndex == 4 ? "WHERE Orders.purchaseDate IS NOT NULL AND Orders.receiveDate IS NULL" : "");
                         
                 cmd.Connection = con;
                 da = new SqlDataAdapter(cmd);

@@ -42,10 +42,10 @@ namespace FacultyOrders
                     {
                         command.CommandText = "INSERT INTO Orders Values(GETDATE(), NULL, NULL, NULL, @account, @urgent, @Comp, @Vendor, @Desc, NULL, @Name, @Email, @Amount, NULL, NULL, NULL, NULL, NULL)";
                         command.Parameters.Add(new SqlParameter("account", txtAccountNumber.Text.ToString()));
-                        command.Parameters.Add(new SqlParameter("urgent", (chkUrgent.Checked)?1:0));
-                        command.Parameters.Add(new SqlParameter("comp", (chkComp.Checked)?1:0));
+                        command.Parameters.Add(new SqlParameter("urgent", (chkUrgent.Checked) ? 1 : 0));
+                        command.Parameters.Add(new SqlParameter("comp", (chkComp.Checked) ? 1 : 0));
                         command.Parameters.Add(new SqlParameter("Vendor", txtVendor.Text.ToString()));
-                        command.Parameters.Add(new SqlParameter("Desc",  txtItemDesc.Text.ToString()));
+                        command.Parameters.Add(new SqlParameter("Desc", txtItemDesc.Text.ToString()));
                         command.Parameters.Add(new SqlParameter("Name", txtName.Text.ToString()));
                         command.Parameters.Add(new SqlParameter("Email", txtEmail.Text.ToString()));
                         command.Parameters.Add(new SqlParameter("Amount", txtAmount.Text.ToString()));
@@ -56,27 +56,26 @@ namespace FacultyOrders
 
                         command.Connection.Close();
 
-                        lblStatus.Text = "Order submitted successfully.";
                         string orderID = dbControls.dbQuery("SELECT TOP 1 OrderID FROM Orders ORDER BY OrderRequestDate DESC");
 
-                        EECSMail mailbox = new EECSMail("taeiantwist@gmail.com", "New Faculty Order",
-                            @"A new faculty order has been placed.
-                              Order ID: " + orderID + @"\n
-                              Name: " + txtName.Text.ToString() + @"\n
-                              Vendor: " + txtVendor.Text.ToString() + @"\n
-                              Ammount: " + txtAmount.Text.ToString() + @"\n
-                              Item Description: " + txtItemDesc.Text.ToString() + @"\n\n
-                              Please log into the accountant view to access further order details.");
-                        mailbox.sendMail();
 
-                        EECSMail mailbox2 = new EECSMail("taeiantwist@gmail.com", "New Faculty Order",
-                            @"Your faculty order has been placed.
-                              Order ID: " + orderID + @"\n
-                              Name: " + txtName.Text.ToString() + @"\n
-                              Vendor: " + txtVendor.Text.ToString() + @"\n
-                              Ammount: " + txtAmount.Text.ToString() + @"\n
-                              Item Description: " + txtItemDesc.Text.ToString());
-                        mailbox2.sendMail();
+                        dbControls.sendMailToRole("Accountant", "New Request",
+                          @"A new faculty order has been placed.
+                              Order ID: " + orderID + @"
+                              Name: " + txtName.Text.ToString() + @"
+                              Vendor: " + txtVendor.Text.ToString() + @"
+                              Amount: " + txtAmount.Text.ToString() + @"
+                              Item Description: " + txtItemDesc.Text.ToString() + @"
+                              Please log into the accountant view to access further order details.");
+
+
+                        String message =  "Your order has been requested.\nOrder ID:" + orderID + "\n\tVendor: " + txtVendor.Text.ToString() + 
+                            "\n\tAmount: " + txtAmount.Text.ToString() + "\n\tItem Description: " + txtItemDesc.Text.ToString() 
+                            + "\nYou will recieve an email when it has been approved/denied, an order has been placed or canceled, or when it has arrived."
+                            + "\nYou will also recieve an email if your order has been changed for any reason.";
+            
+                        EECSMail mailTo = new EECSMail(txtEmail.Text,  "Your order has been requested", message);
+                        mailTo.sendMail();
 
                         txtAccountNumber.Text = "";
                         txtAmount.Text = "";
@@ -84,15 +83,13 @@ namespace FacultyOrders
                         txtItemDesc.Text = "";
                         txtName.Text = "";
                         txtVendor.Text = "";
-
+                        lblStatus.Text = "Order submitted successfully.";
                     }
-                    catch (Exception excep)
-                    {
-                        String strExcep = excep.ToString();
-                        command.Connection.Close();
+                    catch { }
                     }
+                
+                    
                 }
             }
         }
     }
-}

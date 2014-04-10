@@ -46,7 +46,7 @@
                     <asp:GridView runat="server" ID="grdOrders" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdOrders_Sorting" OnRowCommand="gv_RowCommand" Font-Bold="false" SortedAscendingCellStyle-Font-Bold="true">
                         <Columns>
                             <asp:BoundField DataField="OrderID" HeaderText="ID" SortExpression="orderID" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="OrderRequestDate" HeaderText="Date Requested" SortExpression="Order_Request_Date" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="OrderRequestDate" HeaderText="Date Requested" SortExpression="OrderRequestDate" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="URGENT" HeaderText="Urgent" SortExpression="Urgent" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="Requestor" HeaderText="Requestor" SortExpression="Requestor" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="AccountNumber" HeaderText="Acct Number" SortExpression="AccountNumber" ItemStyle-CssClass="col" />
@@ -59,7 +59,7 @@
                             <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="PurchaseDate" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="PostOrderNotes" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="Receive_Date" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="ReceiveDate" ItemStyle-CssClass="col" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="false" />
@@ -73,6 +73,11 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="btnRecieveOrder" runat="server" Text="Recieved Order" OnClick="btnRecieveOrder_Click" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
