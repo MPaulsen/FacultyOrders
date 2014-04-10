@@ -15,6 +15,7 @@ namespace FacultyOrders
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
         GridViewSortEventArgs ea = new GridViewSortEventArgs("Urgent", new SortDirection());
+        int numRows;
 
 
         protected void Page_LoadComplete(object sender, EventArgs e)
@@ -39,7 +40,21 @@ namespace FacultyOrders
 
             loadGrid();
             grdOrders_Sorting(ea);
+            checkPlacedOrder();
 
+        }
+
+        private void checkPlacedOrder()
+        {
+            int i = 0;
+            for (i = 0; i < numRows; i++)
+            {
+                if(grdOrders.Rows[i].Cells[12].Text != "&nbsp;")
+                {
+                    Button btn = grdOrders.Rows[i].Cells[16].FindControl("btnPlaceOrder") as Button;
+                    btn.Text = "Cancel Order";
+                }
+            }
         }
 
         private void loadGrid()
@@ -72,18 +87,17 @@ namespace FacultyOrders
                         + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
                         + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "");
-                    lblError.Text = cmd.CommandText;
                     cmd.Connection = con;
                     da = new SqlDataAdapter(cmd);
                     con.Open();
                     da.Fill(dt);
                     grdOrders.DataSource = dt;
+                    numRows = dt.Rows.Count;
                     grdOrders.DataBind();
                     con.Close();
                 }
                 catch (Exception e)
                 {
-                    lblError.Text = e.ToString();
                 }
 
 
@@ -179,7 +193,6 @@ namespace FacultyOrders
         }
         protected void IndexChanged(Object sender, EventArgs e)
         {
-            lblError.Text = "You selected" + rdoDateView.SelectedIndex.ToString();
             if (rdoDateView.SelectedIndex == 1)
             {
                 tblDate.Visible = true;
@@ -238,6 +251,25 @@ namespace FacultyOrders
             CalenderChange();
         }
 
+        protected void btnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            if(gvr.Cells[12].Text.Equals("&nbsp;"))
+            {
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = '" + Session["UserID"] + "WHERE OrderID = " + gvr.Cells[0].Text +"'");
+                //Get the button that raised the event
+            
+                Session["OrderID"] = gvr.Cells[0].Text;
+
+                Response.Redirect("EditOrder.aspx");
+            }
+            else
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = NULL, UserID = NULL WHERE OrderID = '" + gvr.Cells[0].Text +"'");
+        }
 
         protected void nonQuery(String qS)
         {

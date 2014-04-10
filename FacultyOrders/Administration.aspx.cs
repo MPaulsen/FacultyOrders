@@ -40,8 +40,28 @@ namespace FacultyOrders
 
             loadGrid();
             grdOrders_Sorting(ea);
-
+            checkPlacedOrder();
             disableApprove();
+        }
+
+        protected void btnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+
+            if (gvr.Cells[14].Text.Equals("&nbsp;"))
+            {
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = '" + Session["UserID"] + "WHERE OrderID = " + gvr.Cells[0].Text + "");
+                //Get the button that raised the event
+
+                Session["OrderID"] = gvr.Cells[0].Text;
+
+                Response.Redirect("EditOrder.aspx");
+            }
+             else
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = NULL, UserID = NULL WHERE OrderID = '" + gvr.Cells[0].Text +"'");
         }
 
         private void disableApprove()
@@ -55,6 +75,21 @@ namespace FacultyOrders
             }
             
         }
+
+
+        private void checkPlacedOrder()
+        {
+            int i = 0;
+            for (i = 0; i < numRecords; i++)
+            {
+                if (grdOrders.Rows[i].Cells[14].Text != "&nbsp;")
+                {
+                    Button btn = grdOrders.Rows[i].Cells[19].FindControl("btnPlaceOrder") as Button;
+                    btn.Text = "Cancel Order";
+                }
+            }
+        }
+
         
         protected void btnDelete_Click(object sender, EventArgs e)
         {

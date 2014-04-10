@@ -84,7 +84,7 @@
                     <asp:FileUpload runat="server" />
                 </div>
                 <div><br />
-                    <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" />
+                    <asp:Button ID="btnSubmit" Text="Save Changes" OnClick="btnSubmit_Click" runat="server" />
                 </div>
             </div>
         </div>

@@ -68,6 +68,11 @@
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
+                        <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CausesValidation="false" OnClientClick="return confirm('Are you sure you wish to delete this order?')" />
                     </ItemTemplate>
                 </asp:TemplateField>

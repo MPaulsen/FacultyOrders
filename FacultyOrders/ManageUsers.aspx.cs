@@ -125,6 +125,10 @@ namespace FacultyOrders
 
         }
 
+        protected void btnAdd_click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx");
+        }
 
     }
 }
