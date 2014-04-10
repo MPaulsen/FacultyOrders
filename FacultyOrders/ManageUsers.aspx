@@ -6,7 +6,7 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="Body">
     <div>
         <br />
-
+        <asp:Button Text ="Add User" runat="server" ID="btnAdd" OnClick="btnAdd_click" CssClass="centered"></asp:Button>
         <asp:GridView runat="server" ID="grdUsers" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdUsers_Sorting">
             <Columns>
                 <asp:BoundField DataField="UserID" HeaderText="ID" SortExpression="UserID" ItemStyle-CssClass="col" />

@@ -7,13 +7,11 @@
     <div>
         <br />
         <div>
-            <div class="columns notabs">
-                <div class="titles">
+            <div>
+                <div>
                     <h3>Purchases</h3>
                 </div>
-                <div class="innercontent">
-                    <asp:Label ID="lblError" runat="server" Text="Testing" />
-
+                <div>
                     <asp:RadioButtonList ID="rdoDateView" runat="server" RepeatDirection="Horizontal" RepeatLayout="table" OnSelectedIndexChanged="IndexChanged" AutoPostBack="true">
 
                         <asp:ListItem Selected="True">All Items</asp:ListItem>
@@ -71,6 +69,8 @@
                                 <ItemTemplate>
                                     <asp:Button ID="Delete" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you wish to delete this order?')" OnClick="btnDelete_Click" CausesValidation="false" />
                                 </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
                                 </ItemTemplate>

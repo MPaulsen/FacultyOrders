@@ -87,7 +87,6 @@ namespace FacultyOrders
                         + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
                         + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "");
-                    lblError.Text = cmd.CommandText;
                     cmd.Connection = con;
                     da = new SqlDataAdapter(cmd);
                     con.Open();
@@ -99,7 +98,6 @@ namespace FacultyOrders
                 }
                 catch (Exception e)
                 {
-                    lblError.Text = e.ToString();
                 }
 
 
@@ -195,7 +193,6 @@ namespace FacultyOrders
         }
         protected void IndexChanged(Object sender, EventArgs e)
         {
-            lblError.Text = "You selected" + rdoDateView.SelectedIndex.ToString();
             if (rdoDateView.SelectedIndex == 1)
             {
                 tblDate.Visible = true;
