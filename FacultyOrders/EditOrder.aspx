@@ -63,6 +63,14 @@
                 <asp:TextBox ID="txtItemDesc" TextMode="MultiLine" Rows="10" Width="400px" runat="server"></asp:TextBox>
                 </div>
                 <div>
+                    Post Order Notes:
+                <asp:TextBox ID="txtPONotes" TextMode="MultiLine" Rows="5" Width="400px" runat="server"></asp:TextBox>
+                </div>
+                <div>
+                    PO Number:
+                    <asp:TextBox ID="txtPONumber" runat="server"></asp:TextBox>
+                </div>
+                <div>
                     Total Order Amount: $<asp:TextBox ID="txtAmount" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="revNumber"
                         ControlToValidate="txtAmount"

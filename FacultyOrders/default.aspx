@@ -52,6 +52,7 @@
                     Order contains Laptops/Computers?
                     <asp:CheckBox ID="chkComp" runat="server" />
                 </div>
+                <br />
                 <div>
                     Vendor:
                     <asp:TextBox ID="txtVendor" runat="server"></asp:TextBox>

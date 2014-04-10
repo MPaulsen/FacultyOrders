@@ -52,15 +52,26 @@ namespace FacultyOrders
                         command.Connection.Close();
 
                         lblStatus.Text = "Order submitted successfully.";
+                        string orderID = dbControls.dbQuery("SELECT TOP 1 OrderID FROM Orders ORDER BY OrderRequestDate DESC");
 
                         EECSMail mailbox = new EECSMail("taeiantwist@gmail.com", "New Faculty Order",
                             @"A new faculty order has been placed.
+                              Order ID: " + orderID + @"\n
                               Name: " + txtName.Text.ToString() + @"\n
                               Vendor: " + txtVendor.Text.ToString() + @"\n
                               Ammount: " + txtAmount.Text.ToString() + @"\n
                               Item Description: " + txtItemDesc.Text.ToString() + @"\n\n
                               Please log into the accountant view to access further order details.");
                         mailbox.sendMail();
+
+                        EECSMail mailbox2 = new EECSMail("taeiantwist@gmail.com", "New Faculty Order",
+                            @"Your faculty order has been placed.
+                              Order ID: " + orderID + @"\n
+                              Name: " + txtName.Text.ToString() + @"\n
+                              Vendor: " + txtVendor.Text.ToString() + @"\n
+                              Ammount: " + txtAmount.Text.ToString() + @"\n
+                              Item Description: " + txtItemDesc.Text.ToString());
+                        mailbox2.sendMail();
 
                         txtAccountNumber.Text = "";
                         txtAmount.Text = "";

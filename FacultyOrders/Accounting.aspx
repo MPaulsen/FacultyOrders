@@ -74,4 +74,7 @@
             </Columns>
         </asp:GridView>
     </div>
+    <div>
+        <asp:Button runat="server" OnClick="btnExcel_Click" Text="Export to Excel"/>
+    </div>
 </asp:Content>
