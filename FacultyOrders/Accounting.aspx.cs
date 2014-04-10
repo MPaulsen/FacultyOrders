@@ -31,7 +31,7 @@ namespace FacultyOrders
             }
 
             if (ViewState["sortDirection"] == null)
-                ViewState.Add("sortDirection", "ASC");
+                ViewState.Add("sortDirection", "DESC");
             if (ViewState["sortExpression"] == null)
             {
                 ViewState.Add("sortExpression", "Urgent");
@@ -50,7 +50,7 @@ namespace FacultyOrders
             for (i = 0; i < end; i++)
             {
                 if (!(grdOrders.Rows[i].Cells[11].Text.Equals("&nbsp;")))
-                    grdOrders.Rows[i].Cells[18].Enabled = false;
+                    grdOrders.Rows[i].Cells[19].Enabled = false;
             }
             
         }
@@ -98,22 +98,21 @@ namespace FacultyOrders
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                if (e != null)
-                {
-                    dvSortedView.Sort = e.SortExpression + " " + (e.SortExpression == ViewState["sortExpression"].ToString()? getSortDirectionString(): ViewState["sortDirection"]);
-                    ViewState["sortExpression"] = e.SortExpression;
-                }
+                dvSortedView.Sort = e.SortExpression + " " + ViewState["sortDirection"];
+                ViewState["sortExpression"] = e.SortExpression;
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
         }
-        
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
+
+            if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
+                ViewState["sortDirection"] = getSortDirectionString();
+            else
+                ViewState["sortDirection"] = "ASC";
             ea = e;
         }
-
-
         private string getSortDirectionString()
         {
             if (ViewState["sortDirection"] == null)

@@ -18,6 +18,13 @@ namespace FacultyOrders
                 Response.Redirect("default.aspx");
             if (!IsPostBack)
                 loadForm();
+            else if(Session["Role"].ToString().Equals("Admin"))
+                Response.Redirect("Administration.aspx");
+            else if(Session["Role"].ToString().Equals("Accountant"))
+                Response.Redirect("Accounting.aspx");
+            else
+                Response.Redirect("Purchase.aspx");
+
         }
 
         protected void loadForm()
@@ -52,6 +59,7 @@ namespace FacultyOrders
                                 txtPONumber.Text = result[8].ToString();
                                 txtAmount.Text = result[9].ToString();
                             }
+                            txtName.Text = Session["UserID"].ToString();
                             command.Connection.Close();
                         }
                     }
@@ -79,8 +87,6 @@ namespace FacultyOrders
                 PO_Number = '" + txtPONumber.Text.ToString() + @"',
                 Amount = '" + txtAmount.Text.ToString() + @"' 
             WHERE OrderID = '" + txtOrderID.Text.ToString() + "'");
-
-            lblStatus.Text = "Order updated successfully";
         }
     }
 }

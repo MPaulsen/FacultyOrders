@@ -54,6 +54,7 @@
                 <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="AccountCode" ItemStyle-CssClass="col" />
                 <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number" ItemStyle-CssClass="col" />
                 <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="PurchaseDate" ItemStyle-CssClass="col" />
+                <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="PurchaseDate" ItemStyle-CssClass="col" />
                 <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="PostOrderNotes" ItemStyle-CssClass="col" />
                 <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="ReceiveDate" ItemStyle-CssClass="col" />
                 <asp:TemplateField>

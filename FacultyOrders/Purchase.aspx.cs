@@ -98,6 +98,7 @@ namespace FacultyOrders
                 }
                 catch (Exception e)
                 {
+                    ;
                 }
 
 
@@ -141,18 +142,21 @@ namespace FacultyOrders
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                dvSortedView.Sort = e.SortExpression + " " + getSortDirectionString();
+                dvSortedView.Sort = e.SortExpression + " " + ViewState["sortDirection"];
                 ViewState["sortExpression"] = e.SortExpression;
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
         }
-
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
+
+            if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
+                ViewState["sortDirection"] = getSortDirectionString();
+            else
+                ViewState["sortDirection"] = "ASC";
             ea = e;
         }
-
         private string getSortDirectionString()
         {
             if (ViewState["sortDirection"] == null)
@@ -260,7 +264,7 @@ namespace FacultyOrders
 
             if(gvr.Cells[12].Text.Equals("&nbsp;"))
             {
-                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = '" + Session["UserID"] + "WHERE OrderID = " + gvr.Cells[0].Text +"'");
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = " + Session["UserID"].ToString() + " WHERE OrderID = " + gvr.Cells[0].Text +"");
                 //Get the button that raised the event
             
                 Session["OrderID"] = gvr.Cells[0].Text;

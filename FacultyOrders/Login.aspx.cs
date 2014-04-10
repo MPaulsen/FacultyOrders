@@ -38,6 +38,7 @@ namespace FacultyOrders
                 {
                     string user = txtUser.Text.ToString();
                     Session["User"] = dbControls.dbQuery("SELECT FirstName FROM Users WHERE Username = '" + user + "'");
+                    Session["UserId"] = dbControls.dbQuery("SELECT UserID FROM Users WHERE Username = '" + user + "'");
                     Session["Role"] = dbControls.dbQuery("SELECT Role FROM Users WHERE Username = '" + user + "'");
                     Response.Write("Password is correct");
                     String role = Session["Role"].ToString();
