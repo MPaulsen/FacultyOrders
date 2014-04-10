@@ -44,8 +44,8 @@ namespace FacultyOrders
                                 txtName.Text = result[0].ToString();
                                 txtEmail.Text = result[1].ToString();
                                 txtAccountNumber.Text = result[2].ToString();
-                                chkUrgent.Checked = (result[3].ToString() == "1") ? true : false;
-                                chkComp.Checked = (result[4].ToString() == "1") ? true : false;
+                                chkUrgent.Checked = (result[3].ToString() == "True");
+                                chkComp.Checked = (result[4].ToString() == "True");
                                 txtVendor.Text = result[5].ToString();
                                 txtItemDesc.Text = result[6].ToString();
                                 txtPONotes.Text = result[7].ToString();

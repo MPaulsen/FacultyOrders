@@ -56,11 +56,11 @@
                             <asp:BoundField DataField="ComputerPurchase" HeaderText="Computer?" SortExpression="Computer_Purchase" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="ItemDesc" HeaderText="Description" SortExpression="Item_Desc" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="PreOrderNotes" HeaderText="PreOrder Notes" SortExpression="Pre_Order_Notes" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="Account_Code" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PreOrderNotes" HeaderText="PreOrder Notes" SortExpression="PreOrderNotes" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="Account_ode" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="PO_Number" HeaderText="PO Number" SortExpression="PO_Number" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="Purchase_Date" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="Post_Order_Notes" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PurchaseDate" HeaderText="Purchased" SortExpression="PurchaseDate" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="PostOrderNotes" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="Receive_Date" ItemStyle-CssClass="col" />
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -70,6 +70,9 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="Delete" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you wish to delete this order?')" OnClick="btnDelete_Click" CausesValidation="false" />
+                                </ItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
