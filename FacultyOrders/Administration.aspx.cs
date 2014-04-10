@@ -55,7 +55,7 @@ namespace FacultyOrders
             {
                 dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = " + Session["UserID"] + " WHERE OrderID = " + gvr.Cells[0].Text + "");
                 //Get the button that raised the event
-
+                dbControls.Place(gvr.Cells[0].Text);
                 Session["OrderID"] = gvr.Cells[0].Text;
 
                 Response.Redirect("EditOrder.aspx");
@@ -86,6 +86,12 @@ namespace FacultyOrders
                 {
                     Button btn = grdOrders.Rows[i].Cells[20].FindControl("btnPlaceOrder") as Button;
                     btn.Text = "Cancel Order";
+                }
+                if (grdOrders.Rows[i].Cells[14].Text != "&nbsp;")
+                {
+                    Button btna = grdOrders.Rows[i].Cells[20].FindControl("btnPlaceOrder") as Button;
+                    btna.Text = "Order Recieved";
+                    grdOrders.Rows[i].Cells[20].Enabled = false;
                 }
             }
         }

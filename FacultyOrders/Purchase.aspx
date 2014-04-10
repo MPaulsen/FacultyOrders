@@ -52,7 +52,7 @@
                             <asp:BoundField DataField="AccountNumber" HeaderText="Acct Number" SortExpression="AccountNumber" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="Vendor" HeaderText="Vendor" SortExpression="Vendor" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="ComputerPurchase" HeaderText="Computer?" SortExpression="ComputerPurchase" ItemStyle-CssClass="col" />
-                            <asp:BoundField DataField="ItemDesc" HeaderText="Description" SortExpression="Item_Desc" ItemStyle-CssClass="col" />
+                            <asp:BoundField DataField="ItemDesc" HeaderText="Description" SortExpression="ItemDesc" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="Amount" HeaderText="Amount" SortExpression="Amount" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="PreOrderNotes" HeaderText="PreOrder Notes" SortExpression="PreOrderNotes" ItemStyle-CssClass="col" />
                             <asp:BoundField DataField="AccountCode" HeaderText="Acct Code" SortExpression="AccountCode" ItemStyle-CssClass="col" />

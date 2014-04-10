@@ -14,54 +14,7 @@
     text-align:center;
 }
 
-.column, .columns {
-    float: none;
-    min-height: 1px;
-    padding: 0 15px;
-    position: relative;
-}
 
-    .column.centered, .columns.centered {
-        float: none;
-        margin: 0 auto;
-    }
-.notabs{
-	background-color: #FFF8F0;
-	margin-top: 40px;
-	-moz-box-shadow: 0 0 5px #888;
-	-webkit-box-shadow: 0 0 5px#888;
-	box-shadow: 0 0 5px #888;
-}
-
-
-.innercontent{
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-bottom: 15px;
-	padding-top: 15px;
-}
-
-
-
-.UpperImage {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    margin: 0;
-}
-
-.twelve {
-    width:100%;
-}
-.nine {
-    width: 75%;
-}
-
-.row {
-    margin: 0 -6px;
-}
 .Form {
     vertical-align:initial;
     background-color:white;
@@ -81,33 +34,4 @@
     box-sizing: border-box;
     margin:0;
     
-}
-
-.titles{
-	text-align: center;
-	margin-left: -16px;
-	padding: 6px;
-	margin-right: -17px;
-	color: #fff;
-	background: url('resources/rubbergrip.png');
-	height: 40px;
-	font-size: 14px;
-}
-
-table {
-    background: #fff;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    margin: 0 0 18px;
-    border: 1px solid #ddd;
-}
-
-.row {
-    width: 940px;
-    max-width: 100%;
-    min-width: 768px;
-    margin: 0 auto;
 }
