@@ -17,7 +17,8 @@ namespace FacultyOrders
             message.From = fromAddress;
             message.Subject = subject;
             message.Body = body;
-            message.To.Add(to);
+            MailAddress toAdd = new MailAddress(to);
+            message.To.Add(toAdd);
 
             SmtpServer.Port = 25;
             SmtpServer.UseDefaultCredentials = false;
@@ -31,6 +32,7 @@ namespace FacultyOrders
         {
             SmtpServer.Send(message);
         }
-            
+
+       
     }
 }

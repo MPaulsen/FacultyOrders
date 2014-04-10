@@ -32,10 +32,10 @@ namespace FacultyOrders
             }
 
             if (ViewState["sortDirection"] == null)
-                ViewState.Add("sortDirection", "ASC");
+                ViewState["sortDirection"] = "ASC";
             if (ViewState["sortExpression"] == null)
             {
-                ViewState.Add("sortExpression", "Urgent");
+                ViewState["sortExpression"] = "Urgent";
             }
 
             loadGrid();
@@ -53,9 +53,9 @@ namespace FacultyOrders
 
             if (gvr.Cells[14].Text.Equals("&nbsp;"))
             {
-                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = '" + Session["UserID"] + "WHERE OrderID = " + gvr.Cells[0].Text + "");
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = " + Session["UserID"] + " WHERE OrderID = " + gvr.Cells[0].Text + "");
                 //Get the button that raised the event
-
+                dbControls.Place(gvr.Cells[0].Text);
                 Session["OrderID"] = gvr.Cells[0].Text;
 
                 Response.Redirect("EditOrder.aspx");
@@ -71,7 +71,7 @@ namespace FacultyOrders
             for (i = 0; i < end; i++)
             {
                 if (!(grdOrders.Rows[i].Cells[11].Text.Equals("&nbsp;")))
-                    grdOrders.Rows[i].Cells[18].Enabled = false;
+                    grdOrders.Rows[i].Cells[19].Enabled = false;
             }
             
         }
@@ -84,8 +84,14 @@ namespace FacultyOrders
             {
                 if (grdOrders.Rows[i].Cells[14].Text != "&nbsp;")
                 {
-                    Button btn = grdOrders.Rows[i].Cells[19].FindControl("btnPlaceOrder") as Button;
+                    Button btn = grdOrders.Rows[i].Cells[20].FindControl("btnPlaceOrder") as Button;
                     btn.Text = "Cancel Order";
+                }
+                if (grdOrders.Rows[i].Cells[14].Text != "&nbsp;")
+                {
+                    Button btna = grdOrders.Rows[i].Cells[20].FindControl("btnPlaceOrder") as Button;
+                    btna.Text = "Order Recieved";
+                    grdOrders.Rows[i].Cells[20].Enabled = false;
                 }
             }
         }
@@ -98,6 +104,7 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            dbControls.Delete(gvr.Cells[0].Text);
             dbControls.nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
         }
@@ -132,7 +139,7 @@ namespace FacultyOrders
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                dvSortedView.Sort = e.SortExpression + " " + getSortDirectionString();
+                dvSortedView.Sort = e.SortExpression + " " + ViewState["sortDirection"];
                 ViewState["sortExpression"] = e.SortExpression;
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
@@ -140,6 +147,11 @@ namespace FacultyOrders
         }
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
+
+            if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
+                ViewState["sortDirection"] = getSortDirectionString();
+            else
+                ViewState["sortDirection"] = "ASC";
             ea = e;
         }
         private string getSortDirectionString()
@@ -185,14 +197,15 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
             dbControls.nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+            dbControls.Approve(gvr.Cells[0].Text);
+
 
         }
 
         protected void IndexChanged(Object sender, EventArgs e)
         {
-            if (rdoDateView.SelectedIndex == 2)
+            if (rdoDateView.SelectedIndex == 1)
             {
                 tblDate.Visible = true;
                 ToCalendar.SelectedDate = DateTime.Today;

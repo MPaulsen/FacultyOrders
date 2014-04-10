@@ -51,9 +51,19 @@ namespace FacultyOrders
             {
                 if(grdOrders.Rows[i].Cells[12].Text != "&nbsp;")
                 {
-                    Button btn = grdOrders.Rows[i].Cells[16].FindControl("btnPlaceOrder") as Button;
-                    btn.Text = "Cancel Order";
+                    Button btn = grdOrders.Rows[i].Cells[17].FindControl("btnPlaceOrder") as Button;
+                    btn.Text = "Cancel Order";                
                 }
+                else
+                    grdOrders.Rows[i].Cells[18].Enabled = false;
+                if (grdOrders.Rows[i].Cells[14].Text != "&nbsp;")
+                {
+                    Button btna = grdOrders.Rows[i].Cells[17].FindControl("btnPlaceOrder") as Button;
+                    btna.Text = "Order Recieved";
+                    grdOrders.Rows[i].Cells[17].Enabled = false;
+                    grdOrders.Rows[i].Cells[18].Enabled = false;
+                }
+                    
             }
         }
 
@@ -84,7 +94,7 @@ namespace FacultyOrders
                 {
                     cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS NOT NULL AND ComputerPurchase =  " + viewIsComputer.ToString() + " "
                         + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "")
-                        + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL" : "")
+                        + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL AND Orders.receiveDate IS NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
                         + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "");
                     cmd.Connection = con;
@@ -98,6 +108,7 @@ namespace FacultyOrders
                 }
                 catch (Exception e)
                 {
+                    ;
                 }
 
 
@@ -127,12 +138,9 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
-
-
+            dbControls.Delete(gvr.Cells[0].Text);
             nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void grdOrders_Sorting(GridViewSortEventArgs e)
@@ -141,18 +149,21 @@ namespace FacultyOrders
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                dvSortedView.Sort = e.SortExpression + " " + getSortDirectionString();
+                dvSortedView.Sort = e.SortExpression + " " + ViewState["sortDirection"];
                 ViewState["sortExpression"] = e.SortExpression;
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
         }
-
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
+
+            if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
+                ViewState["sortDirection"] = getSortDirectionString();
+            else
+                ViewState["sortDirection"] = "ASC";
             ea = e;
         }
-
         private string getSortDirectionString()
         {
             if (ViewState["sortDirection"] == null)
@@ -250,7 +261,19 @@ namespace FacultyOrders
             }
             CalenderChange();
         }
-
+        protected void btnRecieveOrder_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            dbControls.nonQuery("UPDATE Orders SET ReceiveDate = GETDATE() WHERE OrderID = " + gvr.Cells[0].Text + "");
+            //Get the button that raised the event
+            string eMail = dbControls.dbQuery("Select RequestorEmail from Orders where OrderID = " + gvr.Cells[0].Text);
+            EECSMail mail = new EECSMail(eMail, "Your order has been canceled!!", "Unfortunately, your order (order#" + gvr.Cells[0]
+                + ") has been canceled.\nAnother email may shortly come explaining any changes, along with a new order being placed.");
+            mail.sendMail();
+        }
+            
         protected void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -258,17 +281,21 @@ namespace FacultyOrders
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
 
-            if(gvr.Cells[12].Text.Equals("&nbsp;"))
+            if (gvr.Cells[12].Text.Equals("&nbsp;"))
             {
-                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = '" + Session["UserID"] + "WHERE OrderID = " + gvr.Cells[0].Text +"'");
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = GETDATE(), UserID = " + Session["UserID"].ToString() + " WHERE OrderID = " + gvr.Cells[0].Text + "");
                 //Get the button that raised the event
-            
+                dbControls.Place(gvr.Cells[0].Text);
                 Session["OrderID"] = gvr.Cells[0].Text;
+
 
                 Response.Redirect("EditOrder.aspx");
             }
             else
-                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = NULL, UserID = NULL WHERE OrderID = '" + gvr.Cells[0].Text +"'");
+            {
+                dbControls.nonQuery("UPDATE Orders SET PurchaseDate = NULL, UserID = NULL WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+                dbControls.Cancel(gvr.Cells[0].Text);
+            }
         }
 
         protected void nonQuery(String qS)
