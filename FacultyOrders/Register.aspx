@@ -66,12 +66,13 @@
             <tr>
                 <td class="auto-style3">Role</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtRole" runat="server" Width="200px"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
-                        ControlToValidate="txtPass" ErrorMessage="Please enter a valid Role" 
-                        ForeColor="#CC0000"></asp:RequiredFieldValidator>
+                    <asp:RadioButtonList ID="rdoRole" runat="server" RepeatDirection="Horizontal" RepeatLayout="table">
+                        <asp:ListItem Selected="True" Text="Computer Purchaser"></asp:ListItem>
+                        <asp:ListItem  Text="Non-Computer Purchaser"></asp:ListItem>
+                        <asp:ListItem  Text="Accountant"></asp:ListItem>
+                        <asp:ListItem  Text="Administrator"></asp:ListItem>
+
+                    </asp:RadioButtonList>
                 </td>
             </tr>
             <tr>
