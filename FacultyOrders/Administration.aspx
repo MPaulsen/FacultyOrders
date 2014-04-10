@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/FacultyOrders.Master" AutoEventWireup="true" CodeBehind="Accounting.aspx.cs" Inherits="FacultyOrders.Accounting" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/FacultyOrders.Master" AutoEventWireup="true" CodeBehind="Administration.aspx.cs" Inherits="FacultyOrders.Administration" EnableEventValidation="false" %>
 
 
 
@@ -9,10 +9,9 @@
         <asp:RadioButtonList ID="rdoDateView" runat="server" RepeatDirection="Horizontal" RepeatLayout="table" OnSelectedIndexChanged="IndexChanged" AutoPostBack="true">
 
             <asp:ListItem Selected="True">All Items</asp:ListItem>
-            <asp:ListItem>Unapproved Items</asp:ListItem>
-            <asp:ListItem>Specific Date Range</asp:ListItem>
+            <asp:ListItem>Specific Date Range:</asp:ListItem>
             <asp:ListItem>Items not ordered</asp:ListItem>
-            <asp:ListItem>Items Ordered, not recieved</asp:ListItem>
+            <asp:ListItem>Ordered, not recieved</asp:ListItem>
 
 
         </asp:RadioButtonList>
@@ -37,6 +36,7 @@
             </asp:TableRow>
 
         </asp:Table>
+
         <asp:GridView runat="server" ID="grdOrders" AllowSorting="true" AutoGenerateColumns="false" OnSorting="grdOrders_Sorting">
             <Columns>
                 <asp:BoundField DataField="OrderID" HeaderText="ID" SortExpression="OrderID" ItemStyle-CssClass="col" />
@@ -73,8 +73,5 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-    </div>
-    <div>
-        <asp:Button runat="server" OnClick="btnExcel_Click" Text="Export to Excel"/>
     </div>
 </asp:Content>

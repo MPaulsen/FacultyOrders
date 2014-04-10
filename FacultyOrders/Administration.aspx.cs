@@ -10,36 +10,19 @@ using System.Web.UI.WebControls;
 
 namespace FacultyOrders
 {
-    public partial class Accounting : System.Web.UI.Page
+    public partial class Administration : System.Web.UI.Page
     {
+        
         int numRecords;
         DataTable dt = new DataTable();
-        GridViewSortEventArgs ea;
         SqlDataAdapter da = new SqlDataAdapter();
-
-        protected void Page_LoadComplete(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["Role"] == null)
+            if (Session["Role"] == null)
                 Response.Redirect("/login.aspx", true);
-            else if (!(Session["Role"].ToString().Equals("Accountant")))
+            else if (!(Session["Role"].ToString().Equals("Admin")))
                 Response.Redirect("/default.aspx", true);
-            if (ea == null)
-            {
-                ea = new GridViewSortEventArgs("Urgent", new SortDirection());
-                ea.SortExpression = "Urgent";
-
-            }
-
-            if (ViewState["sortDirection"] == null)
-                ViewState.Add("sortDirection", "ASC");
-            if (ViewState["sortExpression"] == null)
-            {
-                ViewState.Add("sortExpression", "Urgent");
-            }
-            
             loadGrid();
-            grdOrders_Sorting(ea);
-            
             disableApprove();
         }
 
@@ -62,10 +45,8 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
-
-
             dbControls.nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
+
         }
 
         private void loadGrid()
@@ -79,7 +60,7 @@ namespace FacultyOrders
                     + " AND DATEDIFF(d, Orders.OrderRequestDate, '" + ToCalendar.SelectedDate.ToString() + "') > -1" : "")
                     + (rdoDateView.SelectedIndex == 3 ? "WHERE Orders.purchaseDate IS NULL" : "")
                     + (rdoDateView.SelectedIndex == 4 ? "WHERE Orders.purchaseDate IS NOT NULL" : "");
-                        
+
                 cmd.Connection = con;
                 da = new SqlDataAdapter(cmd);
                 con.Open();
@@ -87,32 +68,23 @@ namespace FacultyOrders
                 numRecords = dt.Rows.Count;
                 grdOrders.DataSource = dt;
                 grdOrders.DataBind();
-                
+
                 con.Close();
             }
         }
 
-        protected void grdOrders_Sorting(GridViewSortEventArgs e)
+        protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
             DataTable dtSortTable = grdOrders.DataSource as DataTable;
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                if (e != null)
-                {
-                    dvSortedView.Sort = e.SortExpression + " " + (e.SortExpression == ViewState["sortExpression"].ToString()? getSortDirectionString(): ViewState["sortDirection"]);
-                    ViewState["sortExpression"] = e.SortExpression;
-                }
+                dvSortedView.Sort = e.SortExpression + " " + getSortDirectionString();
+                ViewState["sortExpression"] = e.SortExpression;
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
         }
-        
-        protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
-        {
-            ea = e;
-        }
-
 
         private string getSortDirectionString()
         {
@@ -157,8 +129,8 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            dbControls.nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
+            dbControls.nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
 
         }
 
@@ -176,24 +148,6 @@ namespace FacultyOrders
             else
                 tblDate.Visible = false;
         }
-        
-        protected void btnExcel_Click(object sender, EventArgs e)
-        {
-            loadGrid();
-            grdOrders_Sorting(ea);
-            Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment; filename=" + "OrdersExport.xls");
-            Response.ContentType = "application/excel";
-            System.IO.StringWriter sw = new System.IO.StringWriter();
-            HtmlTextWriter htw = new HtmlTextWriter(sw);
-            GridView gv = new GridView();
-            gv.DataSource = dt;
-            gv.DataBind();
-            gv.RenderControl(htw);
-            Response.Write(sw.ToString());
-            Response.End();
-        }
-
 
         protected void FromCal_Click(object sender, EventArgs e)
         {
@@ -239,6 +193,5 @@ namespace FacultyOrders
             }
             CalenderChange();
         }
-
     }
 }

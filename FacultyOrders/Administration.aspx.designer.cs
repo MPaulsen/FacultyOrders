@@ -10,7 +10,7 @@
 namespace FacultyOrders {
     
     
-    public partial class Accounting {
+    public partial class Administration {
         
         /// <summary>
         /// rdoDateView control.
