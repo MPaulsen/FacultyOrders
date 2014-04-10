@@ -79,6 +79,8 @@ namespace FacultyOrders
                 PO_Number = '" + txtPONumber.Text.ToString() + @"',
                 Amount = '" + txtAmount.Text.ToString() + @"' 
             WHERE OrderID = '" + txtOrderID.Text.ToString() + "'");
+
+            lblStatus.Text = "Order updated successfully";
         }
     }
 }

@@ -67,7 +67,7 @@ namespace FacultyOrders
 
         }
 
-        private void loadGrid()
+        protected void loadGrid()
         {
             SqlCommand cmd = new SqlCommand();
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString))
