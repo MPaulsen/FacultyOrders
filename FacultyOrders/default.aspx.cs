@@ -21,6 +21,11 @@ namespace FacultyOrders
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             lblStatus.Text = "";
+            if (!Page.IsValid)
+            {
+                lblStatus.Text = "Failed Captcha";
+                return;
+            }
 
             if (txtAmount.Text.ToString() == "")
             {

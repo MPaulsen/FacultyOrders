@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/FacultyOrders.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="FacultyOrders._default" %>
-
+<%@ Register TagPrefix="recaptcha" Namespace="Recaptcha" Assembly="Recaptcha" %>
 
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="Body">
@@ -73,6 +73,15 @@
                 </div>
                 <div>
                     <asp:FileUpload runat="server" />
+                </div>
+                <div>
+                    <recaptcha:RecaptchaControl
+                                ID="recaptcha"
+                                runat="server"
+                                Theme="clean"
+                                PublicKey="6LcAjPESAAAAALxYOv5jLIhSckTRiPhgPiBZPM3C"
+                                PrivateKey="6LcAjPESAAAAAAB_XkAj7BgDebZSZYmqNcqgyB1j"
+                                />
                 </div>
                 <div><br />
                     <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" />
