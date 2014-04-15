@@ -265,8 +265,8 @@ namespace FacultyOrders
             dbControls.nonQuery("UPDATE Orders SET ReceiveDate = GETDATE() WHERE OrderID = " + gvr.Cells[0].Text + "");
             //Get the button that raised the event
             string eMail = dbControls.dbQuery("Select RequestorEmail from Orders where OrderID = " + gvr.Cells[0].Text);
-            EECSMail mail = new EECSMail(eMail, "Your order has been canceled!!", "Unfortunately, your order (order#" + gvr.Cells[0]
-                + ") has been canceled.\nAnother email may shortly come explaining any changes, along with a new order being placed.");
+            EECSMail mail = new EECSMail(eMail, "Your order has been recieved!!", "Congratulations, your order (order#" + gvr.Cells[0].ToString()
+                + ") has been recieved.\n It should be delievered to you shortly, thank you for using our program.");
             mail.sendMail();
         }
             
