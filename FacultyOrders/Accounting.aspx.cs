@@ -14,31 +14,31 @@ namespace FacultyOrders
     {
         int numRecords;
         DataTable dt = new DataTable();
-        GridViewSortEventArgs ea;
         SqlDataAdapter da = new SqlDataAdapter();
 
-        protected void Page_LoadComplete(object sender, EventArgs e)
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["Role"] == null)
+            if (Session["Role"] == null)
                 Response.Redirect("/login.aspx", true);
             else if (!(Session["Role"].ToString().Equals("Accountant")))
                 Response.Redirect("/default.aspx", true);
-            if (ea == null)
-            {
-                ea = new GridViewSortEventArgs("Urgent", new SortDirection());
-                ea.SortExpression = "Urgent";
+        }
 
-            }
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+
 
             if (ViewState["sortDirection"] == null)
                 ViewState.Add("sortDirection", "DESC");
+
             if (ViewState["sortExpression"] == null)
             {
                 ViewState.Add("sortExpression", "Urgent");
             }
             
             loadGrid();
-            grdOrders_Sorting(ea);
+            sortGrid();
             
             disableApprove();
         }
@@ -52,7 +52,6 @@ namespace FacultyOrders
                 if (!(grdOrders.Rows[i].Cells[11].Text.Equals("&nbsp;")))
                     grdOrders.Rows[i].Cells[19].Enabled = false;
             }
-            
         }
         
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -62,8 +61,6 @@ namespace FacultyOrders
 
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-
-
             dbControls.Delete(gvr.Cells[0].Text);
             dbControls.nonQuery(" DELETE FROM Orders  WHERE OrderID = '" + gvr.Cells[0].Text + "'");
         }
@@ -87,31 +84,32 @@ namespace FacultyOrders
                 numRecords = dt.Rows.Count;
                 grdOrders.DataSource = dt;
                 grdOrders.DataBind();
-                
                 con.Close();
             }
         }
 
-        protected void grdOrders_Sorting(GridViewSortEventArgs e)
+        protected void sortGrid()
         {
             DataTable dtSortTable = grdOrders.DataSource as DataTable;
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                dvSortedView.Sort = e.SortExpression + " " + ViewState["sortDirection"];
-                ViewState["sortExpression"] = e.SortExpression;
+                dvSortedView.Sort = ViewState["sortExpression"] + " " + ViewState["sortDirection"];
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
         }
+
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
 
             if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
                 ViewState["sortDirection"] = getSortDirectionString();
             else
+            {
                 ViewState["sortDirection"] = "ASC";
-            ea = e;
+                ViewState["sortExpression"] = e.SortExpression;
+            }
         }
         private string getSortDirectionString()
         {
@@ -157,7 +155,7 @@ namespace FacultyOrders
             //Get the row that contains this button
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             dbControls.nonQuery("UPDATE Orders SET ApprovalDate = GETDATE() WHERE OrderID = '" + gvr.Cells[0].Text + "'");
-
+            dbControls.Approve(gvr.Cells[0].Text);
 
         }
 
@@ -179,7 +177,7 @@ namespace FacultyOrders
         protected void btnExcel_Click(object sender, EventArgs e)
         {
             loadGrid();
-            grdOrders_Sorting(ea);
+            sortGrid();
             Response.ClearContent();
             Response.AddHeader("content-disposition", "attachment; filename=" + "OrdersExport.xls");
             Response.ContentType = "application/excel";

@@ -32,11 +32,14 @@
         <div style="text-align:center">
             <asp:Label ID="lblLogInMess" Text="Nothing." Visible="false"  runat="server"/>
             <asp:HyperLink Text ="Request Page" ID="hlRequest" runat="server" NavigateUrl="~/default.aspx"></asp:HyperLink>
-            <asp:HyperLink Text ="| Login" ID="hlLogin" runat="server" NavigateUrl="~/Login.aspx"></asp:HyperLink>
-            <asp:HyperLink Text ="| Purchasing | " ID ="hlPurchase" runat="server" Visible="false" NavigateUrl="~/Purchase.aspx"></asp:HyperLink>
-            <asp:HyperLink Text ="| Accounting | " ID ="hlAcct" runat="server" Visible="false" NavigateUrl="~/Accounting.aspx"></asp:HyperLink>
-            <asp:HyperLink Text ="| Admin Page | " ID ="hlAdmin" runat="server" Visible="false" NavigateUrl="~/Administration.aspx"></asp:HyperLink>
-            <asp:HyperLink Text =" Manage Users | " ID ="hlUser" runat="server" Visible="false" NavigateUrl="~/ManageUsers.aspx"></asp:HyperLink>
+            <asp:Label ID="Label1" Text=" | " runat ="server"></asp:Label>
+            <asp:HyperLink Text ="Login" ID="hlLogin" runat="server" NavigateUrl="~/Login.aspx"></asp:HyperLink>
+            <asp:HyperLink Text ="Purchasing" ID ="hlPurchase" runat="server" Visible="false" NavigateUrl="~/Purchase.aspx"></asp:HyperLink>
+            <asp:HyperLink Text ="Accounting" ID ="hlAcct" runat="server" Visible="false" NavigateUrl="~/Accounting.aspx"></asp:HyperLink>
+            <asp:HyperLink Text ="Admin Page" ID ="hlAdmin" runat="server" Visible="false" NavigateUrl="~/Administration.aspx"></asp:HyperLink>
+            <asp:Label Text=" | " ID="lblDivAdmin" Visible="false" runat="server"></asp:Label>
+            <asp:HyperLink Text ="Manage Users" ID ="hlUser" runat="server" Visible="false" NavigateUrl="~/ManageUsers.aspx"></asp:HyperLink>
+            <asp:Label Text=" | " ID="lblDivLog" Visible="false" runat="server"></asp:Label>
             <asp:LinkButton Text ="Logout" ID="lbLogout"  runat="server" Visible="false" OnClick="lbLogout_Click" CausesValidation="false"></asp:LinkButton>
 
 

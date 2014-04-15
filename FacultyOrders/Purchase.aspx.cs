@@ -14,22 +14,18 @@ namespace FacultyOrders
     {
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
-        GridViewSortEventArgs ea = new GridViewSortEventArgs("Urgent", new SortDirection());
         int numRows;
 
-
-        protected void Page_LoadComplete(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Role"] == null)
                 Response.Redirect("/login.aspx", true);
             else if (!(Session["Role"].ToString().Equals("PurchaserComp") || Session["Role"].ToString().Equals("PurchaserOther")))
                 Response.Redirect("/default.aspx", true);
-            if (ea == null)
-            {
-                ea = new GridViewSortEventArgs("Urgent", new SortDirection());
-                ea.SortExpression = "Urgent";
-
-            }
+        }
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            
 
             if (ViewState["sortDirection"] == null)
                 ViewState.Add("sortDirection", "ASC");
@@ -39,7 +35,7 @@ namespace FacultyOrders
             }
 
             loadGrid();
-            grdOrders_Sorting(ea);
+            sortGrid();
             checkPlacedOrder();
 
         }
@@ -92,7 +88,7 @@ namespace FacultyOrders
             {
                 try
                 {
-                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS NOT NULL AND ComputerPurchase =  " + viewIsComputer.ToString() + " "
+                    cmd.CommandText = "Select * FROM Orders WHERE Orders.ApprovalDate IS NOT NULL AND ComputerPurchase =  " + viewIsComputer.ToString() + "AND (UserID IS NULL OR UserID = " + Session["UserId"] + ") "
                         + (rdoDateView.SelectedIndex == 2 ? "AND Orders.purchaseDate IS NULL" : "")
                         + (rdoDateView.SelectedIndex == 3 ? "AND Orders.purchaseDate IS NOT NULL AND Orders.receiveDate IS NULL" : "")
                         + (rdoDateView.SelectedIndex == 1 ? "AND DATEDIFF(d, Orders.OrderRequestDate, '" + FromCalendar.SelectedDate.ToString() + "') < 1 "
@@ -143,26 +139,26 @@ namespace FacultyOrders
 
         }
 
-        protected void grdOrders_Sorting(GridViewSortEventArgs e)
+        protected void sortGrid()
         {
             DataTable dtSortTable = grdOrders.DataSource as DataTable;
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                dvSortedView.Sort = e.SortExpression + " " + ViewState["sortDirection"];
-                ViewState["sortExpression"] = e.SortExpression;
+                dvSortedView.Sort = ViewState["sortExpression"] + " " + ViewState["sortDirection"];
                 grdOrders.DataSource = dvSortedView;
                 grdOrders.DataBind();
             }
         }
         protected void grdOrders_Sorting(object sender, GridViewSortEventArgs e)
         {
-
             if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
                 ViewState["sortDirection"] = getSortDirectionString();
             else
+            {
                 ViewState["sortDirection"] = "ASC";
-            ea = e;
+                ViewState["sortExpression"] = e.SortExpression;
+            }
         }
         private string getSortDirectionString()
         {

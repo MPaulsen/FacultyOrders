@@ -5,7 +5,7 @@
     <div class="row">
         <div class="twelve columns notabs">
             <div class="titles">
-                Login
+                <h3>Login</h3>
             </div>
             <div class="innercontent">
                 <table>

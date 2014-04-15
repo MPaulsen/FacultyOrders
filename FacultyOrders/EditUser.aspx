@@ -22,8 +22,8 @@
                 </div>
                 <div>
                     Password:
-                    <asp:TextBox ID="txtPass" runat="server"></asp:TextBox>
-                    <asp:CheckBox ID="chkPass" runat="server" />
+                    <asp:TextBox ID="txtPass" runat="server" Enabled="false"></asp:TextBox>
+                    <asp:CheckBox ID="chkPass" runat="server" Text="Change Password" OnCheckedChanged="chkPass_CheckedChanged" AutoPostBack="true" ViewStateMode="Enabled"/>
                 </div>
                 <div>
                     First Name:

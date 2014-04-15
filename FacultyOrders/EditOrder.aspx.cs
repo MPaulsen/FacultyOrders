@@ -15,7 +15,7 @@ namespace FacultyOrders
     {
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
-            if (Session["OrderID"] == null)
+            if (Session["OrderID"] == null || Session["Role"] == null)
                 Response.Redirect("default.aspx");
                 loadForm();
         }
