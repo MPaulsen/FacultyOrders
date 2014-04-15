@@ -14,9 +14,13 @@ namespace FacultyOrders
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserID"] == null)
+            if (Session["UserID"] == null || Session["Role"] == null || Session["Role"].ToString() != "Admin")
                 Response.Redirect("default.aspx");
-            if (!IsPostBack)
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
                 loadForm();
         }
 
@@ -72,18 +76,20 @@ namespace FacultyOrders
                         Role = '" + ddlRole.SelectedItem.Text.ToString() + @"'
                     WHERE UserID = '" + txtUserID.Text.ToString() + "'");
             else
-                dbControls.nonQuery(@"
-                    UPDATE Users
-                    SET Username = '" + txtUserName.Text.ToString() + @"', 
-                        FirstName = '" + txtFirst.Text.ToString() + @"',
-                        LastName = '" + txtLast.Text.ToString() + @"', 
-                        Email = '" + txtEmail.Text.ToString() + @"', 
-                        Role = '" + ddlRole.SelectedItem.Text.ToString() + @"' 
-                    WHERE UserID = '" + txtUserID.Text.ToString() + "'");
+                dbControls.nonQuery("UPDATE Users "
+                        + "SET Username = '" + txtUserName.Text.ToString()
+                        + "', FirstName = '" + txtFirst.Text.ToString() 
+                        + "', LastName = '" + txtLast.Text.ToString()
+                        + "', Email = '" + txtEmail.Text.ToString() 
+                        + "', Role = '" + ddlRole.Text.ToString()
+                    + "' WHERE UserID = '" + txtUserID.Text.ToString() + "'");
 
             lblStatus.Text = "User updated successfully!";
         }
 
-
+        protected void chkPass_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPass.Enabled = chkPass.Checked;
+        }
     }
 }

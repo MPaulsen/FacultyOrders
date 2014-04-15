@@ -94,6 +94,15 @@ namespace FacultyOrders {
         protected global::System.Web.UI.WebControls.HyperLink hlAdmin;
         
         /// <summary>
+        /// lblDivAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDivAdmin;
+        
+        /// <summary>
         /// hlUser control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace FacultyOrders {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlUser;
+        
+        /// <summary>
+        /// lblDivLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDivLog;
         
         /// <summary>
         /// lbLogout control.

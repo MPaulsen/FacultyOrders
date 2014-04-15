@@ -14,34 +14,26 @@ namespace FacultyOrders
     {
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter();
-        GridViewSortEventArgs ea = new GridViewSortEventArgs("Role", new SortDirection());
+        
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Page_LoadComplete(object sender, EventArgs e)
         {
             if (Session["Role"] == null)
                 Response.Redirect("/login.aspx", true);
             else if (!(Session["Role"].ToString().Equals("Admin")))
                 Response.Redirect("/default.aspx", true);
-            if (ea == null)
-            {
-                ea = new GridViewSortEventArgs("Urgent", new SortDirection());
-                ea.SortExpression = "Urgent";
+        }
 
-            }
-
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
             if (ViewState["sortDirection"] == null)
                 ViewState.Add("sortDirection", "ASC");
             if (ViewState["sortExpression"] == null)
             {
-                ViewState.Add("sortExpression", "Urgent");
+                ViewState.Add("sortExpression", "UserID");
             }
 
             loadGrid();
-            grdUsers_Sorting(ea);
+            sortGrid();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -73,21 +65,27 @@ namespace FacultyOrders
             }
         }
 
-        protected void grdUsers_Sorting(GridViewSortEventArgs e)
+        protected void sortGrid()
         {
             DataTable dtSortTable = grdUsers.DataSource as DataTable;
             if (dtSortTable != null)
             {
                 DataView dvSortedView = new DataView(dtSortTable);
-                dvSortedView.Sort = e.SortExpression + " " + getSortDirectionString();
-                ViewState["sortExpression"] = e.SortExpression;
+                dvSortedView.Sort = ViewState["sortExpression"] + " " + ViewState["sortDirection"];
                 grdUsers.DataSource = dvSortedView;
                 grdUsers.DataBind();
             }
         }
         protected void grdUsers_Sorting(object sender, GridViewSortEventArgs e)
         {
-            ea = e;
+            if (e.SortExpression.ToString() == ViewState["sortExpression"].ToString())
+                ViewState["sortDirection"] = getSortDirectionString();
+            else
+            {
+                ViewState["sortDirection"] = "ASC";
+                ViewState["sortExpression"] = e.SortExpression;
+            }
+
         }
         private string getSortDirectionString()
         {
