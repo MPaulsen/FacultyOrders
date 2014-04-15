@@ -106,7 +106,7 @@ namespace FacultyOrders
                     grdOrders.DataBind();
                     con.Close();
                 }
-                catch (Exception e)
+                catch
                 {
                     ;
                 }
