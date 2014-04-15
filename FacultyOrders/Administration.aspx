@@ -9,10 +9,10 @@
         <asp:RadioButtonList ID="rdoDateView" runat="server" RepeatDirection="Horizontal" RepeatLayout="table" OnSelectedIndexChanged="IndexChanged" AutoPostBack="true">
 
             <asp:ListItem Selected="True">All Items</asp:ListItem>
-            <asp:ListItem>Specific Date Range:</asp:ListItem>
+            <asp:ListItem>Unapproved Items</asp:ListItem>
+            <asp:ListItem>Specific Date Range</asp:ListItem>
             <asp:ListItem>Items not ordered</asp:ListItem>
-            <asp:ListItem>Ordered, not recieved</asp:ListItem>
-
+            <asp:ListItem>Items Ordered, not recieved</asp:ListItem>
 
         </asp:RadioButtonList>
         <asp:Table runat="server" HorizontalAlign="Center" Visible="false" ID="tblDate">
@@ -57,22 +57,29 @@
                 <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" ItemStyle-CssClass="col" />
                 <asp:BoundField DataField="PostOrderNotes" HeaderText="PostOrder Notes" SortExpression="PostOrderNotes" ItemStyle-CssClass="col" />
                 <asp:BoundField DataField="ReceiveDate" HeaderText="Received" SortExpression="ReceiveDate" ItemStyle-CssClass="col" />
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Edit Order">
                     <ItemTemplate>
                         <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CausesValidation="false" />
                     </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField>
+                    </asp:TemplateField>
+                <asp:TemplateField HeaderText="Approve Order">
                     <ItemTemplate>
                         <asp:Button ID="btnApprove" runat="server" Text="Approve" OnClick="btnApprove_Click" CausesValidation="false" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Place Order">
                     <ItemTemplate>
-                        <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
+                        <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" CausesValidation="false" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Recieve Order">
+                    <ItemTemplate>
+                        <asp:Button ID="btnRecieveOrder" runat="server" Text="Recieved Order?" OnClick="btnRecieveOrder_Click" CausesValidation="false" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+
+                <asp:TemplateField HeaderText="Delete Order">
                     <ItemTemplate>
                         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CausesValidation="false" OnClientClick="return confirm('Are you sure you wish to delete this order?')" />
                     </ItemTemplate>
